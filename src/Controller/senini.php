@@ -16,14 +16,6 @@ class senini extends AbstractController
         ]);
     }
 
-    #[Route('/login', name: 'app_login')]
-    public function login() : Response
-    {
-        return $this->render('senini/login.html.twig', [
-            'title' => 'login senini',
-        ]);
-    }
-
     #[Route('/creation', name: 'app_creation')]
     public function creation() : Response
     {
