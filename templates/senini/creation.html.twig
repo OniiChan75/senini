@@ -1,5 +1,31 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Esempio di select box con contenuti dinamici{% endblock %}
+
 {% block body %}
-    <h1>{{ title|upper }}</h1>
+    <h1>Scegli un'opzione:</h1>
+    <select id="my-select" name="my-select">
+        {% for key, value in opzioni %}
+            <option value="{{ key }}">{{ value }}</option>
+        {% endfor %}
+    </select>
+
+    {% for key, value in contenuti %}
+        <div id="{{ key }}" class="contenuto">
+            {{ value }}
+        </div>
+    {% endfor %}
+
+    <script>
+        const select = document.getElementById('my-select');
+        const contenuti = document.querySelectorAll('.contenuto');
+
+        select.addEventListener('change', () => {
+            const selectedValue = select.value;
+            for (const contenuto of contenuti) {
+                contenuto.style.display = 'none';
+            }
+            document.getElementById(selectedValue).style.display = 'block';
+        });
+    </script>
 {% endblock %}
