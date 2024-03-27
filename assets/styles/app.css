@@ -4,4 +4,37 @@
 
 body {
     background-color: lightgray;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer {
+    flex-shrink: 0;
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+}
+
+.footer .container {
+    max-width: 960px;
+}
+
+.footer img {
+    max-width: 100px;
+    margin-bottom: 10px;
+}
+
+.footer h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer ul li {
+    padding: 5px 0;
 }
