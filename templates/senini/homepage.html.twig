@@ -24,7 +24,7 @@
             <button type="submit" class="btn">Accedi</button>
 
             {% for message in app.flashes('error') %}
-                <div class="alert alert-danger">{{ message }}</div>
+                <div class="alert alert-danger" style="text-align: center; margin-top: 4%;">{{ message }}</div>
             {% endfor %}
         </form>
     </div>
