@@ -14,5 +14,4 @@
 /public/build/
 npm-debug.log
 yarn-error.log
-Login-Form-SENINI/*
 ###< symfony/webpack-encore-bundle ###
