@@ -1,21 +1,31 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Login{% endblock %}
+{% block title %}Portale Tecnocanapa{% endblock %}
 
 {% block body %}
-    <form action="{{ path('api_login') }}" method="post">
-        <div class="form-group">
-            <label for="username">Nome utente</label>
-            <input type="text" id="username" name="username" class="form-control" />
-        </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" class="form-control" />
-        </div>
-        <button type="submit" class="btn btn-primary">Accedi</button>
+    <div class="wrapper">
+        <form action="{{ path('api_login') }}" method="post">
+            <div style="text-align: center;">
+                <img src="tecnocanapa.png" alt="Logo Tecnocanapa" align="center" style="margin-bottom: 10px;">
+            </div>
+            <h4 style="margin-bottom: 10px;">Portale per le proposte d'acquisto</h4>
+            <div class="input-box">
+                <input type="text" id="username" name="username" placeholder="Nome utente" required>
+                <i class='bx bxs-user'></i>
+            </div>
+            <div class="input-box">
+                <input type="password" id="passwordInput" name="password" placeholder="Password" required>
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+            <div class="remember-forgot">
+                <label><input type="checkbox" onclick="showPassword()">Mostra Password</label>
+                <label><input type="checkbox" onclick="rememberPassword()">Ricordami</label>
+            </div>
+            <button type="submit" class="btn">Accedi</button>
 
-        {% for message in app.flashes('error') %}
-            <div class="alert alert-danger">{{ message }}</div>
-        {% endfor %}
-    </form>
+            {% for message in app.flashes('error') %}
+                <div class="alert alert-danger">{{ message }}</div>
+            {% endfor %}
+        </form>
+    </div>
 {% endblock %}
