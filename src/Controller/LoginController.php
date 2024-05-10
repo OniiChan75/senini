@@ -15,6 +15,11 @@ class LoginController extends AbstractController
         $username = $request->request->get('username');
         $password = $request->request->get('password');
 
+        if ($username === 'admin' && $password === 'admin') {
+            // Se le credenziali sono corrette, reindirizza alla pagina di amministrazione
+            return $this->redirectToRoute('api_admin');
+        }
+
         if ($username === 'test' && $password === 'test') {
             // Se le credenziali sono corrette, reindirizza alla pagina di creazione
             return $this->redirectToRoute('app_creation');

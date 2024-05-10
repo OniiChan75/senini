@@ -1,31 +1,71 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Esempio di select box con contenuti dinamici{% endblock %}
+{% block title %}Pagina di preventivo{% endblock %}
 
 {% block body %}
-    <h1>Scegli un'opzione:</h1>
-    <select id="my-select" name="my-select">
-        {% for key, value in opzioni %}
-            <option value="{{ key }}">{{ value }}</option>
-        {% endfor %}
-    </select>
+    <!-- Selezione tipo di costruzione -->
+    <div>
+        <h2>Scelta Tipo di Costruzione</h2>
+        <form>
+            <label for="tipoCostruzione">Seleziona il tipo di costruzione:</label>
+            <select name="tipoCostruzione" id="tipoCostruzione">
+                <option value="nuovaCostruzione">Nuova Costruzione</option>
+                <option value="costruzioneEsistente">Costruzione Esistente</option>
+            </select>
+        </form>
+    </div>
 
-    {% for key, value in contenuti %}
-        <div id="{{ key }}" class="contenuto">
-            {{ value }}
+    <!-- Sezione Nuova Costruzione -->
+    <div id="nuovaCostruzione" class="opzioniCostruzione">
+        <h3>Nuova Costruzione</h3>
+        <!-- Aggiungi qui le opzioni per la nuova costruzione -->
+
+        <div>
+            <h4>Muratura di Tamponamento</h4>
+            <form>
+                <label for="superficieTamponamento">Superficie:</label>
+                <input type="text" id="superficieTamponamento" name="superficieTamponamento"><br>
+                <label for="spessoreBloccoAmbiente">Spessore Blocco Ambiente:</label>
+                <select id="spessoreBloccoAmbiente" name="spessoreBloccoAmbiente">
+                    <!-- Opzioni verranno inserite qui tramite JavaScript -->
+                </select><br>
+                <label for="sceltaMaltaTamponamento">Scelta Malta:</label>
+                <select name="sceltaMaltaTamponamento" id="sceltaMaltaTamponamento">
+                    <option value="maltaPronta">Malta Pronta</option>
+                    <option value="maltaMix">Malta Mix</option>
+                </select><br>
+                <button type="button" id="calcolo">Calcola preventivo</button>
+                <!-- Ciclo di intonaco e finitura su tamponamento -->
+                <h5>Ciclo di intonaco e finitura su tamponamento</h5>
+                <label for="sceltaIntonacoTamponamento">Scelta Intonaco:</label>
+                <select name="sceltaIntonacoTamponamento" id="sceltaIntonacoTamponamento">
+                    <option value="alCivileInterno">Al Civile Interno: ICN e Malta Fine</option>
+                    <option value="alCivileEsterno">Al Civile Esterno: ICN e SNT+</option>
+                    <option value="intonacoMaterico">Intonaco a Civile e Rasatura Materica (Interno/Esterno): ICN +
+                        Canapulino</option>
+                    <option value="intonacoCanaposo">Intonaco a Civile e Rasatura Materica (Interno): ICN + Canaposo
+                    </option>
+                    <option value="intonacoBB500">Intonaco di Corpo Materico (Interno/Esterno): BB 500 Venezia</option>
+                </select><br>
+            </form>
         </div>
-    {% endfor %}
+    </div>
+{% endblock %}
 
+{% block javascripts %}
     <script>
-        const select = document.getElementById('my-select');
-        const contenuti = document.querySelectorAll('.contenuto');
+        const tipoCostruzioneSelect = document.getElementById("tipoCostruzione");
+        const nuovaCostruzioneDiv = document.getElementById("nuovaCostruzione");
+        const costruzioneEsistenteDiv = document.getElementById("costruzioneEsistente");
 
-        select.addEventListener('change', () => {
-            const selectedValue = select.value;
-            for (const contenuto of contenuti) {
-                contenuto.style.display = 'none';
+        tipoCostruzioneSelect.addEventListener("change", function () {
+            if (tipoCostruzioneSelect.value === "nuovaCostruzione") {
+                nuovaCostruzioneDiv.style.display = "block";
+                costruzioneEsistenteDiv.style.display = "none";
+            } else {
+                nuovaCostruzioneDiv.style.display = "none";
+                costruzioneEsistenteDiv.style.display = "block";
             }
-            document.getElementById(selectedValue).style.display = 'block';
         });
-    </script>
+    </script>whawwwww
 {% endblock %}

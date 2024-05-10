@@ -1,66 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Portale Tecnocanapa{% endblock %}
+{% block title %}Pagina amministratore 2{% endblock %}
 
 {% block body %}
-    <div class="wrapper">
-        <form action="{{ path('api_login') }}" method="post">
-            <div style="text-align: center;">
-                <img src="{{ asset('img/tecnocanapa.png') }}" alt="Logo Tecnocanapa" align="center" style="margin-bottom: 10px;">
-            </div>
-            <h4 style="margin-bottom: 10px;">Portale per le proposte d'acquisto</h4>
-            <div class="input-box">
-                <input type="text" id="username" name="username" placeholder="Nome utente" required>
-                <i class='bx bxs-user'></i>
-            </div>
-            <div class="input-box">
-                <input type="password" id="passwordInput" name="password" placeholder="Password" required>
-                <i class='bx bxs-lock-alt'></i>
-            </div>
-            <div class="remember-forgot">
-                <label><input type="checkbox" onclick="showPassword()">Mostra Password</label>
-                <label><input type="checkbox" onclick="rememberPassword()">Ricordami</label>
-            </div>
-            <button type="submit" class="btn">Accedi</button>
-
-            {% for message in app.flashes('error') %}
-                <div class="alert alert-danger" style="text-align: center; margin-top: 4%;">{{ message }}</div>
-            {% endfor %}
-        </form>
+    <div class="buttons"></div>
+    <div>
+    <button onclick="window.location.href = 'aggiunta.html';">Aggiunta</button>
+    <button onclick="window.location.href = 'rimozione.html';">Rimozione</button>
+    <button onclick="window.location.href = 'modifica.html';">Modifica</button>
     </div>
-{% endblock %}
-
-{% block javascripts %}
-    <script>
-        function rememberPassword() {
-            var rememberCheckbox = document.querySelector('input[type="checkbox"][onclick="rememberPassword()"]');
-            var passwordInput = document.getElementById('passwordInput');
-            if (rememberCheckbox.checked) {
-                passwordInput.setAttribute('data-remembered', 'true');
-            } else {
-                passwordInput.removeAttribute('data-remembered');
-            }
-        }
-
-        function showPassword() {
-            var passwordInput = document.getElementById('passwordInput');
-            if (passwordInput.type === "password") {
-                passwordInput.type = "text";
-            } else {
-                passwordInput.type = "password";
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', function() {
-            var rememberedPassword = localStorage.getItem('rememberedPassword');
-            var passwordInput = document.getElementById('passwordInput');
-            if (rememberedPassword === 'true') {
-                passwordInput.type = 'text';
-                document.querySelector('input[type="checkbox"][onclick="showPassword()"]').checked = true;
-            }
-        });
-    </script>
-{% endblock %}
+{%  endblock %}
 
 {% block stylesheets %}
     <style>
@@ -70,20 +19,22 @@
             box-sizing: border-box;
             font-family: "Poppins", sans-serif;
         }
+
         body{
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: url({{ asset('img/background.png') }}) no-repeat;
+            background: url({{ asset('img/background.png')}}) no-repeat;
             background-size: cover;
             background-position: center;
         }
+
         .wrapper{
             width: 420px;
             background: rgba(128, 114, 96, 0.4);
             border: 2px solid rgba(255, 255, 255, .2);
-            backdrop-filter: blur(1px);
+            backdrop-filter: blur(9px);
             color: #fff;
             border-radius: 12px;
             padding: 30px 40px;
@@ -175,5 +126,54 @@
         .register-link p a:hover{
             text-decoration: underline;
         }
+
+
+        .input-field {
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        .input-field select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .input-field i {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+        }
+
+
+        header {
+            background-color: rgba(255, 255, 255, 255);
+            padding: 10px 0;
+            text-align: center;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 999; /* Assicura che l'header sia sopra a tutto il resto */
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999; /* Assicura che la navbar sia sopra a tutto il resto */
+        }
+
+        /* Wrapper */
+        .wrapper {
+            margin-top: 80px; /* Altezza della navbar */
+            /* Rimuovi il margine superiore della prima wrapper */
+            margin-top: 80px;
+        }
+
     </style>
 {% endblock %}

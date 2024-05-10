@@ -20,9 +20,7 @@ class senini extends AbstractController
     public function creation() : Response
     {
         return $this->render('senini/creation.html.twig', [
-            'title' => 'creation senini',
-            'opzioni' => ['opzione1', 'opzione2', 'opzione3'],
-            'contenuti' => ['opzione1', 'opzione2', 'opzione3'],
+
         ]);
     }
 

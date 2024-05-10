@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pagina amministratore{% endblock %}
+
+{% block body %}
+    <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="../assets/imgs/tecnocanapa.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top"> Senini
+
+            </a>
+        </div>
+    </nav>
+
+    <!-- Form per aggiungere utente -->
+    <div class="wrapper">
+        <form action="">
+            <h4 style="margin-bottom: 10px;">Aggiungi utente</h4>
+            <form id="addUserForm">
+                <!-- Input per il nome utente -->
+                <div class="input-box">
+                    <input type="text" placeholder="Nome utente" required>
+                    <i class='bx bxs-user'></i>
+                </div>
+
+                <!-- Input per la password -->
+                <div class="input-box">
+                    <input type="password" id="passwordInput" placeholder="Password" required>
+                    <i class='bx bxs-lock-alt'></i>
+                </div>
+
+                <!-- Selezione del ruolo -->
+                <div class="input-box">
+                    <label for="role">Ruolo:</label>
+                    <select id="role" name="role">
+                        <option value="NORMAL">Normale</option>
+                        <option value="ADMIN">Amministratore</option>
+                    </select><br>
+                </div>
+
+                <!-- Bottone di submit -->
+                <button type="submit" class="btn">Accedi</button>
+            </form>
+        </form>
+    </div>
+
+    <!-- Form per rimuovere utente -->
+    <div class="wrapper">
+        <form action="">
+            <h4 style="margin-bottom: 10px;">Rimuovi utente</h4>
+            <form id="removeUserForm">
+                <!-- Input per il nome utente -->
+                <div class="input-box">
+                    <input type="text" placeholder="Nome utente" required>
+                    <i class='bx bxs-user'></i>
+                </div>
+                <!-- Bottone di submit -->
+                <button type="submit" class="btn">Rimuovi Utente</button>
+            </form>
+        </form>
+    </div>
+
+    <!-- Form per modificare utente -->
+    <div class="wrapper">
+        <form action="">
+            <h4 style="margin-bottom: 10px;">Modifica utente</h4>
+            <form id="editUserForm">
+                <!-- Input per il nome utente -->
+                <div class="input-box">
+                    <input type="text" placeholder="Nome utente" required>
+                    <i class='bx bxs-user'></i>
+                </div>
+
+                <!-- Input per la password -->
+                <div class="input-box">
+                    <input type="password" id="passwordInput" placeholder="Password" required>
+                    <i class='bx bxs-lock-alt'></i>
+                </div>
+
+                <!-- Selezione del ruolo -->
+                <div class="input-box">
+                    <label for="role">Ruolo:</label>
+                    <div class="input-field">
+                        <select id="role" name="role">
+                            <option value="NORMAL">Normale</option>
+                            <option value="ADMIN">Amministratore</option>
+                        </select>
+                        <i class='bx bxs-user'></i>
+                    </div>
+                </div>
+
+                <!-- Bottone di submit -->
+                <button type="submit" class="btn">Modifica Credenziali</button>
+            </form>
+        </form>
+    </div>
+{%  endblock %}
