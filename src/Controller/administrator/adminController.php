@@ -13,10 +13,4 @@ class adminController extends AbstractController
     {
         return $this->render('administrator/administrator_page.html.twig');
     }
-
-    #[Route('/api/login/administrator2', name: 'api_admin2')]
-    public function admin_page2(): Response
-    {
-        return $this->render('administrator/administrator_page2.html.twig');
-    }
 }
