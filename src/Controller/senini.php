@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 class senini extends AbstractController
 {
     #[Route('/', name: 'app_homepage')]
-    public function homepage() : Response
+    public function homepage(): Response
     {
         return $this->render('senini/homepage.html.twig', [
             'title' => 'senini fabric',
@@ -17,7 +17,7 @@ class senini extends AbstractController
     }
 
     #[Route('/creation', name: 'app_creation')]
-    public function creation() : Response
+    public function creation(): Response
     {
         return $this->render('senini/creation.html.twig', [
 
