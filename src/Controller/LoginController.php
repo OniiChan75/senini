@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Users;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -10,18 +12,23 @@ use Symfony\Component\Routing\Annotation\Route;
 class LoginController extends AbstractController
 {
     #[Route('/api/login', name: 'api_login')]
-    public function login(Request $request): Response
+    public function login(Request $request, EntityManagerInterface $entityManager): Response
     {
         $username = $request->request->get('username');
         $password = $request->request->get('password');
 
-        if ($username === 'admin' && $password === 'admin') {
-            // Se le credenziali sono corrette, reindirizza alla pagina di amministrazione
-            return $this->redirectToRoute('api_admin');
-        }
+        $Users = $entityManager->getRepository(Users::class);
+        $user = $Users->findOneBy([
+            'UserId' => $username,
+            'Password' => $password,
+        ]);
 
-        if ($username === 'test' && $password === 'test') {
-            // Se le credenziali sono corrette, reindirizza alla pagina di creazione
+        if($user != null){
+            if ($user->getRole() == 'admin') {
+                // Se le credenziali sono corrette, reindirizza alla pagina di amministrazione
+                return $this->redirectToRoute('api_admin');
+            }
+
             return $this->redirectToRoute('app_creation');
         }
 

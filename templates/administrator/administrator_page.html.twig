@@ -6,7 +6,7 @@
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img src="../assets/imgs/tecnocanapa.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top"> Senini
+                <img src="{{ asset('img/tecnocanapa.png') }}" alt="Logo" width="30" height="24" class="d-inline-block align-text-top"> Senini
 
             </a>
         </div>
@@ -14,18 +14,17 @@
 
     <!-- Form per aggiungere utente -->
     <div class="wrapper">
-        <form action="">
+        <form action="{{ path('api_addUser') }}" method="post">
             <h4 style="margin-bottom: 10px;">Aggiungi utente</h4>
-            <form id="addUserForm">
                 <!-- Input per il nome utente -->
                 <div class="input-box">
-                    <input type="text" placeholder="Nome utente" required>
+                    <input type="text" id="username" name="username" placeholder="Nome utente" required>
                     <i class='bx bxs-user'></i>
                 </div>
 
                 <!-- Input per la password -->
                 <div class="input-box">
-                    <input type="password" id="passwordInput" placeholder="Password" required>
+                    <input type="password" id="password" name="password" placeholder="Password" required>
                     <i class='bx bxs-lock-alt'></i>
                 </div>
 
@@ -33,31 +32,54 @@
                 <div class="input-box">
                     <label for="role">Ruolo:</label>
                     <select id="role" name="role">
-                        <option value="NORMAL">Normale</option>
-                        <option value="ADMIN">Amministratore</option>
+                        <option value="normal">Normale</option>
+                        <option value="admin">Amministratore</option>
                     </select><br>
                 </div>
 
                 <!-- Bottone di submit -->
-                <button type="submit" class="btn">Accedi</button>
-            </form>
+                <button type="submit" class="btn">Aggiungi utente</button>
         </form>
+
+        {% for message in app.flashes('successAdd') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        {% for message in app.flashes('errorAdd') %}
+            <div class="alert alert-danger">
+                {{ message }}
+            </div>
+        {% endfor %}
     </div>
+
+    <br><br>
 
     <!-- Form per rimuovere utente -->
     <div class="wrapper">
-        <form action="">
+        <form action="{{ path('api_delUser') }}" method="post">
             <h4 style="margin-bottom: 10px;">Rimuovi utente</h4>
-            <form id="removeUserForm">
                 <!-- Input per il nome utente -->
                 <div class="input-box">
-                    <input type="text" placeholder="Nome utente" required>
+                    <input type="text" id="username" name="username" placeholder="Nome utente" required>
                     <i class='bx bxs-user'></i>
                 </div>
                 <!-- Bottone di submit -->
                 <button type="submit" class="btn">Rimuovi Utente</button>
-            </form>
         </form>
+
+        {% for message in app.flashes('successDel') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        {% for message in app.flashes('errorDel') %}
+            <div class="alert alert-danger">
+                {{ message }}
+            </div>
+        {% endfor %}
     </div>
 
     <!-- Form per modificare utente -->
