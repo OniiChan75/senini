@@ -84,36 +84,36 @@
 
     <!-- Form per modificare utente -->
     <div class="wrapper">
-        <form action="">
+        <form action="{{ path('api_modiUser') }}" method="POST">
             <h4 style="margin-bottom: 10px;">Modifica utente</h4>
-            <form id="editUserForm">
                 <!-- Input per il nome utente -->
                 <div class="input-box">
-                    <input type="text" placeholder="Nome utente" required>
+                    <label> inserire il nome del utente da modificare</label>
+                    <input type="text" id="username" name="username" placeholder="Nome utente" required>
                     <i class='bx bxs-user'></i>
                 </div>
 
                 <!-- Input per la password -->
                 <div class="input-box">
-                    <input type="password" id="passwordInput" placeholder="Password" required>
+                    <label> inserirre qua la nuova password</label>
+                    <input type="password" id="password" name="password" placeholder="Password" required>
                     <i class='bx bxs-lock-alt'></i>
-                </div>
-
-                <!-- Selezione del ruolo -->
-                <div class="input-box">
-                    <label for="role">Ruolo:</label>
-                    <div class="input-field">
-                        <select id="role" name="role">
-                            <option value="NORMAL">Normale</option>
-                            <option value="ADMIN">Amministratore</option>
-                        </select>
-                        <i class='bx bxs-user'></i>
-                    </div>
                 </div>
 
                 <!-- Bottone di submit -->
                 <button type="submit" class="btn">Modifica Credenziali</button>
-            </form>
         </form>
+
+        {% for message in app.flashes('successModi') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        {% for message in app.flashes('errorModi') %}
+            <div class="alert alert-danger">
+                {{ message }}
+            </div>
+        {% endfor %}
     </div>
 {%  endblock %}

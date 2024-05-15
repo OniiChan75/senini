@@ -64,4 +64,28 @@ class adminController extends AbstractController
         $this->addFlash('successDel', 'User eliminated');
         return $this->redirectToRoute('api_admin');
     }
+
+    #[Route('/api/administrator/modi_user', name: 'api_modiUser')]
+    public function modi_user(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $username = $request->request->get('username');
+        $password = $request->request->get('password');
+
+        $user = $entityManager->getRepository(Users::class)->findOneBy([
+            'UserId' => $username,
+        ]);
+
+        if ($user == null) {
+            $this->addFlash('errorModi', "UserId doesn't exist");
+            return $this->redirectToRoute('api_admin');
+        }
+
+        $user->setPassword($password);
+
+        $entityManager->persist($user);
+        $entityManager->flush();
+
+        $this->addFlash('successModi', 'User modified');
+        return $this->redirectToRoute('api_admin');
+    }
 }
