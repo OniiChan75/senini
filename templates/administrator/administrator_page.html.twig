@@ -3,19 +3,16 @@
 {% block title %}Pagina amministratore{% endblock %}
 
 {% block body %}
-    <nav class="navbar bg-body-tertiary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="{{ asset('img/tecnocanapa.png') }}" alt="Logo" width="30" height="24" class="d-inline-block align-text-top"> Senini
 
-            </a>
-        </div>
-    </nav>
+    <div class="background">
+        <img src="{{ asset('img/background.png') }}" alt="background" class="background">
+    </div>
 
-    <!-- Form per aggiungere utente -->
-    <div class="wrapper">
-        <form action="{{ path('api_addUser') }}" method="post">
-            <h4 style="margin-bottom: 10px;">Aggiungi utente</h4>
+    <div class="content">
+        <!-- Form per aggiungere utente -->
+        <div class="wrapper">
+            <form action="{{ path('api_addUser') }}" method="post">
+                <h4 style="margin-bottom: 10px;">Aggiungi utente</h4>
                 <!-- Input per il nome utente -->
                 <div class="input-box">
                     <input type="text" id="username" name="username" placeholder="Nome utente" required>
@@ -39,27 +36,27 @@
 
                 <!-- Bottone di submit -->
                 <button type="submit" class="btn">Aggiungi utente</button>
-        </form>
+            </form>
 
-        {% for message in app.flashes('successAdd') %}
-            <div class="alert alert-success">
-                {{ message }}
-            </div>
-        {% endfor %}
+            {% for message in app.flashes('successAdd') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
 
-        {% for message in app.flashes('errorAdd') %}
-            <div class="alert alert-danger">
-                {{ message }}
-            </div>
-        {% endfor %}
-    </div>
+            {% for message in app.flashes('errorAdd') %}
+                <div class="alert alert-danger">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
 
-    <br><br>
+        <br><br>
 
-    <!-- Form per rimuovere utente -->
-    <div class="wrapper">
-        <form action="{{ path('api_delUser') }}" method="post">
-            <h4 style="margin-bottom: 10px;">Rimuovi utente</h4>
+        <!-- Form per rimuovere utente -->
+        <div class="wrapper">
+            <form action="{{ path('api_delUser') }}" method="post">
+                <h4 style="margin-bottom: 10px;">Rimuovi utente</h4>
                 <!-- Input per il nome utente -->
                 <div class="input-box">
                     <input type="text" id="username" name="username" placeholder="Nome utente" required>
@@ -67,25 +64,25 @@
                 </div>
                 <!-- Bottone di submit -->
                 <button type="submit" class="btn">Rimuovi Utente</button>
-        </form>
+            </form>
 
-        {% for message in app.flashes('successDel') %}
-            <div class="alert alert-success">
-                {{ message }}
-            </div>
-        {% endfor %}
+            {% for message in app.flashes('successDel') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
 
-        {% for message in app.flashes('errorDel') %}
-            <div class="alert alert-danger">
-                {{ message }}
-            </div>
-        {% endfor %}
-    </div>
+            {% for message in app.flashes('errorDel') %}
+                <div class="alert alert-danger">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
 
-    <!-- Form per modificare utente -->
-    <div class="wrapper">
-        <form action="{{ path('api_modiUser') }}" method="POST">
-            <h4 style="margin-bottom: 10px;">Modifica utente</h4>
+        <!-- Form per modificare utente -->
+        <div class="wrapper">
+            <form action="{{ path('api_modiUser') }}" method="POST">
+                <h4 style="margin-bottom: 10px;">Modifica utente</h4>
                 <!-- Input per il nome utente -->
                 <div class="input-box">
                     <label> inserire il nome del utente da modificare</label>
@@ -102,18 +99,102 @@
 
                 <!-- Bottone di submit -->
                 <button type="submit" class="btn">Modifica Credenziali</button>
-        </form>
+            </form>
 
-        {% for message in app.flashes('successModi') %}
-            <div class="alert alert-success">
-                {{ message }}
-            </div>
-        {% endfor %}
+            {% for message in app.flashes('successModi') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
 
-        {% for message in app.flashes('errorModi') %}
-            <div class="alert alert-danger">
-                {{ message }}
-            </div>
-        {% endfor %}
+            {% for message in app.flashes('errorModi') %}
+                <div class="alert alert-danger">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
     </div>
 {%  endblock %}
+
+{%  block stylesheets %}
+    <style>
+        /* Stile per il body */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Stile per il contenitore del background */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            filter: blur(4px);
+            transform: scale(1.1);
+            z-index: -1;
+        }
+
+        /* Stile per il contenitore del contenuto */
+        .content {
+            position: relative;
+            z-index: 1;
+            background: rgba(128, 114, 96, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(9px);
+            color: #fff;
+            border-radius: 12px;
+            padding: 30px 40px;
+            margin: auto; /* Aggiunto per centrare il contenuto */
+            max-width: 600px; /* Aggiunto per limitare la larghezza del contenuto */
+            animation: fadeIn 1s ease-in-out; /* Aggiunto effetto di fade iniziale più corto */
+        }
+
+        /* Stile per il titolo */
+        h2 {
+            color: white;
+            font-size: 24px; /* Esempio di dimensione del font più grande */
+            text-align: center; /* Centra il testo */
+        }
+
+        /* Stile per le opzioni */
+        select, input, button {
+            margin-bottom: 30px; /* Aumenta lo spazio tra gli elementi */
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        /* Stile per i pulsanti */
+        button {
+            cursor: pointer;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px 20px; /* Aumenta il padding per rendere i pulsanti più grandi */
+            border-radius: 5px;
+            transition: background-color 0.3s; /* Aggiunge una transizione al cambiamento del colore di sfondo */
+        }
+
+        button:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        /* Aggiungi animazione di fade */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+    </style>
+{% endblock %}

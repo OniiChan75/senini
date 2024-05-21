@@ -3,69 +3,368 @@
 {% block title %}Pagina di preventivo{% endblock %}
 
 {% block body %}
-    <!-- Selezione tipo di costruzione -->
-    <div>
-        <h2>Scelta Tipo di Costruzione</h2>
-        <form>
-            <label for="tipoCostruzione">Seleziona il tipo di costruzione:</label>
-            <select name="tipoCostruzione" id="tipoCostruzione">
-                <option value="nuovaCostruzione">Nuova Costruzione</option>
-                <option value="costruzioneEsistente">Costruzione Esistente</option>
-            </select>
-        </form>
+    <div class="">
+        <img src="{{ asset('img/background.png') }}" alt="" class="background">
     </div>
 
-    <!-- Sezione Nuova Costruzione -->
-    <div id="nuovaCostruzione" class="opzioniCostruzione">
-        <h3>Nuova Costruzione</h3>
-        <!-- Aggiungi qui le opzioni per la nuova costruzione -->
+    <div class="content">
 
-        <div>
-            <h4>Muratura di Tamponamento</h4>
-            <form>
-                <label for="superficieTamponamento">Superficie:</label>
+        <h2>Scegli il tipo di costruzione</h2>
+        <select id="tipo-costruzione" onchange="showOptions()">
+            <option value="nuova-costruzione">Nuova costruzione</option>
+            <option value="costruzione-esistente">Costruzione esistente</option>
+        </select><br>
+
+        <form id="inserimento" action="{{ path('api_analyzeForm') }}" method="post">
+
+
+            <div id="opzioni-nuova-costruzione">
+                <h3>Nuova costruzione</h3>
+                <!-- muratura di temponamento -->
+                <h3>Muratura di tamponamento</h3>
+                <label for="superficieTamponamento">Superficie (mq):</label>
                 <input type="text" id="superficieTamponamento" name="superficieTamponamento"><br>
-                <label for="spessoreBloccoAmbiente">Spessore Blocco Ambiente:</label>
-                <select id="spessoreBloccoAmbiente" name="spessoreBloccoAmbiente">
-                    <!-- Opzioni verranno inserite qui tramite JavaScript -->
-                </select><br>
+                <label for="spessoreBloccoAmbiente">Spessore Blocco Ambiente (cm):</label>
+                <input type="text" id="spessoreBloccoAmbiente" name="spessoreBloccoAmbiente"><br>
                 <label for="sceltaMaltaTamponamento">Scelta Malta:</label>
                 <select name="sceltaMaltaTamponamento" id="sceltaMaltaTamponamento">
                     <option value="maltaPronta">Malta Pronta</option>
                     <option value="maltaMix">Malta Mix</option>
                 </select><br>
-                <button type="button" id="calcolo">Calcola preventivo</button>
-                <!-- Ciclo di intonaco e finitura su tamponamento -->
-                <h5>Ciclo di intonaco e finitura su tamponamento</h5>
+
+                <!-- ciclo di intonaco e finitura su tamponamento -->
+                <h3>Ciclo di intonaco e finitura su tamponamento</h3>
                 <label for="sceltaIntonacoTamponamento">Scelta Intonaco:</label>
                 <select name="sceltaIntonacoTamponamento" id="sceltaIntonacoTamponamento">
                     <option value="alCivileInterno">Al Civile Interno: ICN e Malta Fine</option>
                     <option value="alCivileEsterno">Al Civile Esterno: ICN e SNT+</option>
-                    <option value="intonacoMaterico">Intonaco a Civile e Rasatura Materica (Interno/Esterno): ICN +
-                        Canapulino</option>
+                    <option value="intonacoMaterico">Intonaco a Civile e Rasatura Materica (Interno/Esterno): ICN
+                        +Canapulino</option>
                     <option value="intonacoCanaposo">Intonaco a Civile e Rasatura Materica (Interno): ICN + Canaposo
                     </option>
                     <option value="intonacoBB500">Intonaco di Corpo Materico (Interno/Esterno): BB 500 Venezia</option>
                 </select><br>
-            </form>
-        </div>
+
+                <!-- tavoli divisori -->
+                <h3>Tavolati divisori</h3>
+                <label for="materiale">Materiale:</label>
+                <select name="materiale" id="materiale">
+                    <option value="bloccoAmbiente">Blocco Ambiente</option>
+                    <option value="doppiaLastra">Doppia lastra gessofibra + canafiber</option>
+                </select><br>
+                <label for="superficieTavoliDivisori">Superficie:</label>
+                <input type="text" id="superficieTavoliDivisori" name="superficieTavoliDivisori"><br>
+                <label for="spessoreTavoliDivisori">Spessore:</label>
+                <input type="text" id="spessoreTavoliDivisori" name="spessoreTavoliDivisori"><br>
+                <div id="bloccoAmbiente">
+                    <label for="maltaTavDiv">Scelta malta</label>
+                    <select name="maltaTavDiv" id="maltaTavDiv">
+                        <option value="maltaPronta">Malta Pronta</option>
+                        <option value="maltaMix">Malta Mix</option>
+                    </select><br>
+                </div>
+                <div id="doppiaLastra" style="display: none;">
+                    <label for="spessoreCanafiber">Spessore canafiber</label>
+                    <input type="text" id="spessoreCanafiber" name="spessoreCanafiber"><br>
+                    <label for="superficieCanafiber">Superficie canafiber</label>
+                    <input type="text" id="superficieCanafiber" name="superficieCanafiber"><br>
+                </div>
+
+                <!-- ciclo di intonaco e finitura su tavoli divisori -->
+                <h3>Ciclo di intonaco e finitura su tavoli divisori</h3>
+                <label for="sceltaIntonacoTavoliDivisori">Scelta Intonaco:</label>
+                <select name="sceltaIntonacoTavoliDivisori" id="sceltaIntonacoTavoliDivisori">
+                    <option value="1">Al civile interno: ICN e Malta Fine</option>
+                    <option value="2">Intonaco a civile e rasatura materica: ICN + Canapulino</option>
+                    <option value="3">Intonaco a civile e rasatura materica: ICN + Canaposo</option>
+                    <option value="4">Intonaco di corpo materico: BB 500 Venezia</option>
+                </select><br>
+
+                <!-- isolamento copertura -->
+                <h3>Isolamento copertura</h3>
+                <label for="superficieIsolamentoCopertura">Superficie:</label>
+                <input type="text" id="superficieIsolamentoCopertura" name="superficieIsolamentoCopertura"><br>
+                <label for="spessoreIsolamentoCopertura">Spessore:</label>
+                <input type="text" id="spessoreIsolamentoCopertura" name="spessoreIsolamentoCopertura"><br>
+
+                <!-- isolamento sottofondo -->
+                <h3>Isolamento sottofondo</h3>
+                <label for="superficieIsolamentoSottofondo">Superficie:</label>
+                <input type="text" id="superficieIsolamentoSottofondo" name="superficieIsolamentoSottofondo"><br>
+                <label for="spessoreIsolamentoSottofondo">Spessore:</label>
+                <input type="text" id="spessoreIsolamentoSottofondo" name="spessoreIsolamentoSottofondo"><br>
+
+            </div>
+
+
+            <div id="opzioni-costruzione-esistente" style="display: none;">
+                <h3>Costruzione esistente</h3>
+                <!-- controparete esterna -->
+                <h3>Controparete esterna</h3>
+                <label for="superficieContropareteEsterna">Superficie:</label>
+                <input type="text" id="superficieContropareteEsterna" name="superficieContropareteEsterna"><br>
+                <label for="controparteEsterna">Scelta tra:</label>
+                <select name="controparteEsterna" id="controparteEsterna">
+                    <option value="controparteEsterna1">Solo blocco ambiente</option>
+                    <option value="controparteEsterna2">Blocco ambiente + canafiber</option>
+                    <option value="controparteEsterna3">Blocco ambiente + bio beton pronto</option>
+                </select><br>
+                <div id="controparteEsterna1">
+                    <label for="spessoreBA">Spessore blocco ambiente:</label>
+                    <input type="text" id="spessoreBA" name="spessoreBA"><br>
+                </div>
+                <div id="controparteEsterna2" style="display: none;">
+                    <label for="spessoreBA">Spessore blocco ambiente:</label>
+                    <input type="text" id="spessoreBA" name="spessoreBA"><br>
+                    <label for="spessoreCanafiber">Spessore canafiber:</label>
+                    <input type="text" id="spessoreCanafiber" name="spessoreCanafiber"><br>
+                </div>
+                <div id="controparteEsterna3" style="display: none;">
+                    <label for="spessoreBA">Spessore blocco ambiente:</label>
+                    <input type="text" id="spessoreBA" name="spessoreBA"><br>
+                    <label for="spessoreBioBeton">Spessore bio beton pronto:</label>
+                    <input type="text" id="spessoreBioBeton" name="spessoreBioBeton"><br>
+                </div>
+
+                <!-- isolamento copertura esistente -->
+                <h3>Isolamento copertura esistente</h3>
+                <label for="superficieIsolamentoCoperturaEsistente">Superficie:</label>
+                <input type="text" id="superficieIsolamentoCoperturaEsistente"
+                       name="superficieIsolamentoCoperturaEsistente"><br>
+                <label for="spessoreIsolamentoCoperturaEsistente">Spessore:</label>
+                <input type="text" id="spessoreIsolamentoCoperturaEsistente"
+                       name="spessoreIsolamentoCoperturaEsistente"><br>
+
+                <!-- isolamento sottofondo esistente -->
+                <h3>Isolamento sottofondo esistente</h3>
+                <label for="superficieIsolamentoSottofondoEsistente">Superficie:</label>
+                <input type="text" id="superficieIsolamentoSottofondoEsistente"
+                       name="superficieIsolamentoSottofondoEsistente"><br>
+                <label for="spessoreIsolamentoSottofondoEsistente">Spessore:</label>
+                <input type="text" id="spessoreIsolamentoSottofondoEsistente"
+                       name="spessoreIsolamentoSottofondoEsistente"><br>
+
+            </div>
+
+            <button type="submit" id="confermaAggiunta" class="btn">Conferma aggiunte</button>
+
+        </form>
+
     </div>
 {% endblock %}
 
 {% block javascripts %}
     <script>
-        const tipoCostruzioneSelect = document.getElementById("tipoCostruzione");
-        const nuovaCostruzioneDiv = document.getElementById("nuovaCostruzione");
-        const costruzioneEsistenteDiv = document.getElementById("costruzioneEsistente");
+        // Seleziona la combo box
+        var controparteInternaComboBox = document.getElementById("controparteInterna");
 
-        tipoCostruzioneSelect.addEventListener("change", function () {
-            if (tipoCostruzioneSelect.value === "nuovaCostruzione") {
-                nuovaCostruzioneDiv.style.display = "block";
-                costruzioneEsistenteDiv.style.display = "none";
-            } else {
-                nuovaCostruzioneDiv.style.display = "none";
-                costruzioneEsistenteDiv.style.display = "block";
+        // Aggiungi un listener per l'evento change
+        controparteInternaComboBox.addEventListener("change", function() {
+            // Ottieni il valore selezionato nella combo box
+            var scelta = controparteInternaComboBox.value;
+
+
+            // Visualizza il div appropriato in base alla scelta
+            if (scelta === "controparteInterna1") {
+                document.getElementById("controparteInterna1").style.display = "block";
+                document.getElementById("contropareteInterna2").style.display = "none";
+                document.getElementById("contropareteInterna3").style.display = "none";
+                document.getElementById("contropareteInterna4").style.display = "none";
+                document.getElementById("contropareteInterna5").style.display = "none";
+
+
+            } else if (scelta === "controparteInterna2") {
+                document.getElementById("controparteInterna2").style.display = "block";
+                document.getElementById("controparteInterna1").style.display = "none";
+                document.getElementById("controparteInterna3").style.display = "none";
+                document.getElementById("controparteInterna4").style.display = "none";
+                document.getElementById("contropareteInterna5").style.display = "none";
+
+
+            } else if (scelta === "controparteInterna3"){
+                document.getElementById("controparteInterna3").style.display = "block";
+                document.getElementById("controparteInterna1").style.display = "none";
+                document.getElementById("controparteInterna2").style.display = "none";
+                document.getElementById("controparteInterna4").style.display = "none";
+                document.getElementById("contropareteInterna5").style.display = "none";
+
+
+            }else if (scelta === "controparteInterna4"){
+                document.getElementById("controparteInterna4").style.display = "block";
+                document.getElementById("controparteInterna1").style.display = "none";
+                document.getElementById("controparteInterna3").style.display = "none";
+                document.getElementById("controparteInterna2").style.display = "none";
+                document.getElementById("contropareteInterna5").style.display = "none";
+
+
+            }else if (scelta === "controparteInterna5"){
+                document.getElementById("controparteInterna5").style.display = "block";
+                document.getElementById("controparteInterna1").style.display = "none";
+                document.getElementById("controparteInterna3").style.display = "none";
+                document.getElementById("controparteInterna4").style.display = "none";
+                document.getElementById("contropareteInterna2").style.display = "none";
+
+
             }
         });
+
     </script>
+
+    <script>
+        // Seleziona la combo box
+        var controparteEsternaComboBox = document.getElementById("controparteEsterna");
+
+        // Aggiungi un listener per l'evento change
+        controparteEsternaComboBox.addEventListener("change", function() {
+            // Ottieni il valore selezionato nella combo box
+            var scelta = controparteEsternaComboBox.value;
+
+
+            // Visualizza il div appropriato in base alla scelta
+            if (scelta === "controparteEsterna1") {
+                document.getElementById("controparteEsterna1").style.display = "block";
+                document.getElementById("controparteEsterna2").style.display = "none";
+                document.getElementById("controparteEsterna3").style.display = "none";
+            } else if (scelta === "controparteEsterna2") {
+                document.getElementById("controparteEsterna2").style.display = "block";
+                document.getElementById("controparteEsterna1").style.display = "none";
+                document.getElementById("controparteEsterna3").style.display = "none";
+            } else if (scelta === "controparteEsterna3"){
+                document.getElementById("controparteEsterna3").style.display = "block";
+                document.getElementById("controparteEsterna1").style.display = "none";
+                document.getElementById("controparteEsterna2").style.display = "none";
+            }
+        });
+
+
+    </script>
+
+    <script>
+        // Seleziona la combo box
+        var materialeComboBox = document.getElementById("materiale");
+
+        // Aggiungi un listener per l'evento change
+        materialeComboBox.addEventListener("change", function() {
+            // Ottieni il valore selezionato nella combo box
+            var scelta = materialeComboBox.value;
+
+            // Nascondi tutti i div
+            var divs = document.querySelectorAll("div[id^='blocco']");
+            divs.forEach(function(div) {
+                div.style.display = "none";
+            });
+
+            // Visualizza il div appropriato in base alla scelta
+            if (scelta === "bloccoAmbiente") {
+                document.getElementById("bloccoAmbiente").style.display = "block";
+                document.getElementById("doppiaLastra").style.display = "none";
+            } else if (scelta === "doppiaLastra") {
+                document.getElementById("doppiaLastra").style.display = "block";
+                document.getElementById("bloccoAmbiente").style.display = "none";
+            }
+        });
+
+
+    </script>
+
+
+    <script>
+        document.getElementById('confermaAggiunte').addEventListener('click', function () {
+            document.getElementById('inserimento').submit();
+        });
+
+        function showOptions() {
+            var tipoCostruzione = document.getElementById('tipo-costruzione').value;
+            if (tipoCostruzione === 'nuova-costruzione') {
+                document.getElementById('opzioni-nuova-costruzione').style.display = 'block';
+                document.getElementById('opzioni-costruzione-esistente').style.display = 'none';
+            } else {
+                document.getElementById('opzioni-nuova-costruzione').style.display = 'none';
+                document.getElementById('opzioni-costruzione-esistente').style.display = 'block';
+            }
+        }
+    </script>
+{% endblock %}
+
+{%  block stylesheets %}
+    <style>
+        /* Stile per il body */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Stile per il contenitore del background */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            filter: blur(4px);
+            transform: scale(1.1);
+            z-index: -1;
+        }
+
+        /* Stile per il contenitore del contenuto */
+        .content {
+            position: relative;
+            z-index: 1;
+            background: rgba(128, 114, 96, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(9px);
+            color: #fff;
+            border-radius: 12px;
+            padding: 30px 40px;
+            margin: auto; /* Aggiunto per centrare il contenuto */
+            max-width: 600px; /* Aggiunto per limitare la larghezza del contenuto */
+            animation: fadeIn 1s ease-in-out; /* Aggiunto effetto di fade iniziale più corto */
+        }
+
+        /* Stile per il titolo */
+        h2 {
+            color: white;
+            font-size: 24px; /* Esempio di dimensione del font più grande */
+            text-align: center; /* Centra il testo */
+        }
+
+        /* Stile per le opzioni */
+        select, input, button {
+            margin-bottom: 30px; /* Aumenta lo spazio tra gli elementi */
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        /* Stile per i pulsanti */
+        button {
+            cursor: pointer;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px 20px; /* Aumenta il padding per rendere i pulsanti più grandi */
+            border-radius: 5px;
+            transition: background-color 0.3s; /* Aggiunge una transizione al cambiamento del colore di sfondo */
+        }
+
+        button:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        /* Aggiungi animazione di fade */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+    </style>
 {% endblock %}

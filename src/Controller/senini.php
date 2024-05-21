@@ -12,7 +12,7 @@ class senini extends AbstractController
     public function homepage(): Response
     {
         return $this->render('senini/homepage.html.twig', [
-            'title' => 'senini fabric',
+
         ]);
     }
 
@@ -24,4 +24,9 @@ class senini extends AbstractController
         ]);
     }
 
+    #[Route('/api/login/administrator', name: 'api_admin')]
+    public function admin_page(): Response
+    {
+        return $this->render("administrator/administrator_page.html.twig");
+    }
 }

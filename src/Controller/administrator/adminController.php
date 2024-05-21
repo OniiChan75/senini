@@ -11,11 +11,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class adminController extends AbstractController
 {
-    #[Route('/api/login/administrator', name: 'api_admin')]
-    public function admin_page(): Response
-    {
-        return $this->render('administrator/administrator_page.html.twig');
-    }
 
     #[Route('/api/administrator/add_user', name: 'api_addUser')]
     public function add_user(Request $request, EntityManagerInterface $entityManager): Response
