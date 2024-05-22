@@ -30,10 +30,6 @@
         .item {
             margin-bottom: 10px;
         }
-        .calculation {
-            margin-top: 5px;
-            margin-left: 20px;
-        }
     </style>
 </head>
 <body>
@@ -41,18 +37,15 @@
     <div class="section">
         <div class="title">Muratura di Tamponamento</div>
         <div class="item">
-            n. 300 mq <b>Blocco Ambiente®</b> in canapa e calce dim. 20 x 36 sp. 40 cm = 108,36 mc @ € 380,00 /mc (considerato per il 90% del volume di muratura)
-            <div class="calculation">---------> € 137,30 /mq</div>
+            n. {{ superficieTamponamento }} mq <b>Blocco Ambiente®</b> in canapa e calce dim. 20 x 36 sp. {{ spessoreTamponamento }} cm = {{ metriCubiBloccoAmbiente }} mc @ € 380,00 /mc (considerato per il 90% del volume di muratura) ---------> € {{ prezzoMetroQuadroBloccoAmbiente }} /mq
         </div>
         <div class="item">
-            n. 300 mq <b>Malta di allettamento</b> di canapa e calce in sacchi da miscelare in cantiere 24 ore prima dell’uso = 12,00 mc @ € 406,00 /mc (considerato per il 10% del volume di muratura)
-            <div class="calculation">---------> € 16,20 /mq</div>
+            n. {{ superficieTamponamento }} mq <b>Malta di allettamento</b> di canapa e calce in sacchi da miscelare in cantiere 24 ore prima dell’uso = {{ metriCubiMalta }} mc @ € 406,00 /mc (considerato per il 10% del volume di muratura) ---------> € {{ prezzoMetroQuadroMalta }} /mq
         </div>
         <div class="item">
             In alternativa, la Malta di Allettamento può essere fornita in secchi già pronta all’uso:
             <div class="calculation">
-                n. 300 mq <b>Malta di allettamento</b> di canapa e calce in secchi da 20 kg (15 lt) = 800 secchi @ € 23,00 cad (considerato per il 10% del volume di muratura)
-                <div class="calculation">---------> € 61,30 /mq</div>
+                n. {{ superficieTamponamento }} mq <b>Malta di allettamento</b> di canapa e calce in secchi da 20 kg (15 lt) = {{ calcoloSecchiMalta }} secchi @ € 23,00 cad (considerato per il 10% del volume di muratura) ---------> € {{ prezzoMetroQuadroMaltaSecchi }} /mq
             </div>
         </div>
     </div>
@@ -60,24 +53,20 @@
     <div class="section">
         <div class="title">Ciclo di Finitura Interno al Civile</div>
         <div class="item">
-            n. 0 mq <b>Intonaco di Calce Naturale</b> in sacco da 25 kg = 0 sacchi @ € 11,00 /sacco (intonaco di corpo sp. 2cm - resa 30kg/mq)
-            <div class="calculation">---------> € 0,00 /mq</div>
+            n. {{ superficieIntonacoTamponamento }} mq <b>Intonaco di Calce Naturale</b> in sacco da 25 kg = {{ calcoloSacchiIntonaco }} sacchi @ € 11,00 /sacco (intonaco di corpo sp. 2cm - resa 30kg/mq) ---------> € {{ prezzoMetroQuadroSacchiIntonaco }} /mq
         </div>
         <div class="item">
-            n. 0 mq <b>Malta Fine intonaco a sabbia</b> in sacco da 25 kg = 0 sacchi @ € 16,00 /sacco (rasatura interna sp. 3mm - resa 4kg/mq)
-            <div class="calculation">---------> € 0,00 /mq</div>
+            n. {{ superficieIntonacoTamponamento }} mq <b>Malta Fine intonaco a sabbia</b> in sacco da 25 kg = {{ calcoloSacchiMaltaFinetura }} sacchi @ € 6,00 /sacco (rasatura interna sp. 3mm - resa 4kg/mq) ---------> € {{ prezzoMetroQuadroMaltaFinetura }} /mq
         </div>
     </div>
 
     <div class="section">
         <div class="title">Ciclo di Finitura Esterno al Civile</div>
         <div class="item">
-            n. 0 mq <b>Intonaco di Calce Naturale</b> in sacco da 25 kg = 0 sacchi @ € 11,00 /sacco (intonaco di corpo sp. 2cm - resa 30kg/mq)
-            <div class="calculation">---------> € 0,00 /mq</div>
+            n. {{ superficieIntonacoTamponamento }} mq <b>Intonaco di Calce Naturale</b> in sacco da 25 kg = {{ calcoloSacchiIntonaco }} sacchi @ € 11,00 /sacco (intonaco di corpo sp. 2cm - resa 30kg/mq) ---------> € {{ prezzoMetroQuadroSacchiIntonaco }} /mq
         </div>
         <div class="item">
-            n. 0 mq <b>SIVIT Stabilitura Idraulica Traspirante Fine Plus</b> in sacco da 25 kg = 0 sacchi @ ########## (rasatura esterna sp. 4mm - resa 8kg/mq)
-            <div class="calculation">---------> € 0,00 /mq</div>
+            n. {{ superficieIntonacoTamponamento }} mq <b>SIVIT Stabilitura Idraulica Traspirante Fine Plus</b> in sacco da 25 kg = {{ calcoloSacchiSNTplus }} sacchi @ € 26,00 /sacco (rasatura esterna sp. 4mm - resa 8kg/mq) ---------> € {{ prezzoMetroQuadroSNTplus }} /mq
         </div>
         <div class="item">
             n. 1 sacco <b>QMU Calce Naturale Tinta Lasciapassare</b> per ogni porta/finestra per preparazione punti critici come da indicazioni del manuale di posa (pag. 1/1) = 1 @ € 26,00 cad
@@ -87,20 +76,16 @@
     <div class="section">
         <div class="title">Ciclo di Finitura Interno/Esterno in Canape</div>
         <div class="item">
-            n. 0 mq <b>Bio Beton 500 Kenaf</b> in secchio da 20 lt = 0 secchi @ ########## (intonaco di corpo interno/esterno sp. 1,5cm - resa 1 secchio/mq)
-            <div class="calculation">---------> € 0,00 /mq</div>
+            n. {{ superficieIntonacoTamponamento }} mq <b>Bio Beton 500 Kenaf</b> in secchio da 20 lt = {{ calcoloSecchiBioBeton }} secchi @ € 23,00 /secchio (intonaco di corpo interno/esterno sp. 1,5cm - resa 1 secchio/mq) ---------> € {{ prezzoMetroQuadroBioBeton }} /mq
         </div>
         <div class="item">
-            n. 0 mq <b>Biointonaco Polibrick</b> - 0,5lt secchio di Bio Beton = ########## (intonaco di corpo interno/esterno sp. 1,5cm - resa 1 secchio/mq)
-            <div class="calculation">---------> € 0,00 /mq</div>
+            n. {{ superficieIntonacoTamponamento }} mq <b>Additivo Probiotico</b> - 0,5lt secchio di Bio Beton = {{ calcoloAdditivoProbiotico  }} /lt @ € 13,00 /lt ---------> € {{ prezzoMetroQuadroAdditivoProbiotico }} /mq
         </div>
         <div class="item">
-            n. 0 mq <b>Intonaco di Calce Naturale</b> in sacco da 25 kg = 0 sacchi @ € 11,00 /sacco (intonaco di corpo sp. 2cm - resa 30kg/mq)
-            <div class="calculation">---------> € 0,00 /mq</div>
+            n. {{ superficieIntonacoTamponamento }} mq <b>Intonaco di Calce Naturale</b> in sacco da 25 kg = {{ calcoloSacchiIntonaco }} sacchi @ € 11,00 /sacco (intonaco di corpo sp. 2cm - resa 30kg/mq) ---------> € {{ prezzoMetroQuadroSacchiIntonaco }} /mq
         </div>
         <div class="item">
-            n. 0 mq <b>Campagna in secchio</b> in sacco da 25 kg = 0 secchi @ ########## (rasatura interna/esterna sp. 5mm - resa 1 secchio/3mq)
-            <div class="calculation">---------> € 0,00 /mq</div>
+            n. {{ superficieIntonacoTamponamento }} mq <b>Campagna in secchio</b> in secchio da 20 lt = {{ calcoloSecchiCanapulino }} secchi @ € 27,00 /secchio (rasatura interna/esterna sp. 5mm - resa 1 secchio/3mq) ---------> € {{ prezzoMetroQuadroCanapulino }} /mq
         </div>
         <div class="item">
             n. 1 sacco <b>QMU Calce Naturale Tinta Lasciapassare</b> per ogni porta/finestra per preparazione punti critici come da indicazioni del manuale di posa (pag. 1/1) = 1 @ € 26,00 cad
@@ -110,24 +95,21 @@
     <div class="section">
         <div class="title">Isolamento Copertura</div>
         <div class="item">
-            n. 0 mq <b>Bio Beton 200 Kenaf</b> di canapa e calce sp. 25 cm = 0 mc @ € 123,00 /mc (premiscelato e pronto all'uso in big bag da 1 o 2 mc)
-            <div class="calculation">---------> € 0,00 /mq</div>
+            n. {{ superficieIsolamentoCopertura }} mq <b>Bio Beton 200 Kenaf</b> di canapa e calce sp. {{ spessoreIsolamentoCopertura }} cm = {{ calcoloIsolamentoCopertura }} mc @ € 230,00 /mc (premiscelato e pronto all'uso in big bag da 1 o 2 mc) ---------> € {{ prezzoMetroQuadroIsolamentoCopertura }} /mq
         </div>
     </div>
 
     <div class="section">
         <div class="title">Isolamento Sottofondo</div>
         <div class="item">
-            n. 0 mq <b>Bio Beton 200 Kenaf</b> di canapa e calce sp. 15 cm = 0 mc @ € 123,00 /mc (premiscelato e pronto all'uso in big bag da 1 o 2 mc)
-            <div class="calculation">---------> € 0,00 /mq</div>
+            n. {{ superficieIsolamentoSottofondo }} mq <b>Bio Beton 200 Kenaf</b> di canapa e calce sp. {{ spessoreIsolamentoSottofondo }} cm = {{ calcoloIsolamentoSottofondo }} mc @ € 230,00 /mc (premiscelato e pronto all'uso in big bag da 1 o 2 mc) ---------> € {{ prezzoMetroQuadroIsolamentoSottofondo }} /mq
         </div>
     </div>
 
     <div class="section">
         <div class="title">Controparete Interna</div>
         <div class="item">
-            n. 0 mq <b>Fibra di canapa in pannelli</b> in fibra di canapa dim. 60 x 120 cm = 0 mq @ € 280,00 /mc (compreso telaio metallico e accessori con eventuale detrazione)
-            <div class="calculation">---------> € 0,00 /mq</div>
+            n. 0 mq <b>Fibra di canapa in pannelli</b> in fibra di canapa dim. 60 x 120 cm = 0 mq @ € 280,00 /mc (compreso telaio metallico e accessori con eventuale detrazione) ---------> € 0,00 /mq
         </div>
     </div>
 </div>
