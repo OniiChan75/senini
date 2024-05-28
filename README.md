@@ -12,3 +12,15 @@ Questo file `README.md` fornisce una panoramica dell'applicazione **senini** e d
 
 1. symfony serve:start
 2. yarn encore dev --watch
+
+**Instruzioni per una modifica:**
+1. git status (per vedere cosa hai modificato)
+2. git add . (aggiunge tutti i file modificati)
+3. git commit -m"testo in inglese di cosa si è fatto"
+4. git push
+
+se non va
+
+1. git pull (prendere i dati)
+
+***IMPORTANTE LEGGERE LE RISPOSTE NEL TERMINALE***
