@@ -15,7 +15,7 @@ class creationFormController extends AbstractController
         //Muratura di tamponamento
         $superficieTamponamento = (float)$request->request->get('superficieTamponamento') ?? 0;
         $spessoreTamponamento = (float)$request->request->get('spessoreTamponamento') ?? 0;
-        //$sceltaMaltaTamponamento = $request->request->get('sceltaMaltaTamponamento') ?? 0;
+        $sceltaMaltaTamponamento = $request->request->get('sceltaMaltaTamponamento') ?? 0;
 
         //Ciclo di intonaco e finitura su tamponamento
         $superficieIntonacoTamponamento = (float)$request->request->get('superficieIntonacoTamponamento') ?? 0;
@@ -131,7 +131,7 @@ class creationFormController extends AbstractController
 
 
         /*return $this->render('senini/pdf-finale.html.twig', [
-            'data' => $data,
+
         ]);*/
     }
 }

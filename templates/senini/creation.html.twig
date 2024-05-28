@@ -18,7 +18,7 @@
         <form id="inserimento" action="{{ path('api_analyzeForm') }}" method="post">
 
             <div id="opzioni-nuova-costruzione">
-                <h3>Nuova costruzione</h3>
+                <h1>Nuova costruzione</h1>
                 
                 <!-- muratura di temponamento -->
                 <h3>Muratura di tamponamento</h3>
@@ -94,13 +94,17 @@
                 <label for="superficieIsolamentoSottofondo">Superficie (mq):</label>
                 <input type="text" id="superficieIsolamentoSottofondo" name="superficieIsolamentoSottofondo"><br>
                 <label for="spessoreIsolamentoSottofondo">Spessore (cm):</label>
-                <input type="text" id="spessoreIsolamentoSottofondo" name="spessoreIsolamentoSottofondo"><br>
+                <input type="text" id="spessoreIsolamentoSottofondo" name="spessoreIsolamentoSottofondo"><br><br>
+
+                <label for="agente">Agente: </label>
+                <input type="text" id="agente" name="agente"><br>
 
             </div>
 
 
+
             <div id="opzioni-costruzione-esistente" style="display: none;">
-                <h3>Costruzione esistente</h3>
+                <h1>Costruzione esistente</h1>
                 <!-- controparete esterna -->
                 <h3>Controparete esterna</h3>
                 <label for="superficieContropareteEsterna">Superficie:</label>
@@ -215,6 +219,9 @@
                 <input type="text" id="superficieTermointonaco" name="superficieTermointonaco"><br>
                 <label for="spessoreTermointonaco">Spessore:</label>
                 <input type="text" id="spessoreTermointonaco" name="spessoreTermointonaco"><br><br><br>
+
+                <label for="agente">Agente: </label>
+                <input type="text" id="agente" name="agente"><br>
 
             </div>
             <button type="submit" class="btn" id="confermaAggiunte">Conferma aggiunte</button>

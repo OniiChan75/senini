@@ -9,6 +9,15 @@
     </div>
 
     <div class="content">
+
+        <h2>Scegli le modifiche che vuoi fare</h2>
+        <select id="modifiche" onchange="showOptions()">
+            <option value="utente">Modifica tabella utenti</option>
+            <option value="materiali">Modifica tabella materiali</option>
+        </select><br>
+
+        <div id="opzioni-modifica-utenti">
+        <h1>Modifica tabella utenti</h1>
         <!-- Form per aggiungere utente -->
         <div class="wrapper">
             <form action="{{ path('api_addUser') }}" method="post">
@@ -112,9 +121,20 @@
                     {{ message }}
                 </div>
             {% endfor %}
+
+        </div>
         </div>
     </div>
+
+    <div id="opzioni-modifica-materiali" style="display: none;">
+        <h1>Modifica tabella materiali</h1>
+        <!-- Form per aggiungere materiale -->
+
 {%  endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/admin.js') }}"></script>
+{% endblock %}
 
 {%  block stylesheets %}
     <style>
