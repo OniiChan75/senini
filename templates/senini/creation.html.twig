@@ -21,6 +21,7 @@
                 <h1>Nuova costruzione</h1>
                 
                 <!-- muratura di temponamento -->
+                <div class="muratura_tamponamento">
                 <h3>Muratura di tamponamento</h3>
                 <label for="superficieTamponamento">Superficie (mq):</label>
                 <input type="text" id="superficieTamponamento" name="superficieTamponamento"><br>
@@ -31,8 +32,10 @@
                     <option value="maltaPronta">Malta Pronta</option>
                     <option value="maltaMix">Malta Mix</option>
                 </select><br>
+                </div>
 
                 <!-- ciclo di intonaco e finitura su tamponamento -->
+                <div class="ciclo_intonaco_finitura_tamp">
                 <h3>Ciclo di intonaco e finitura su tamponamento</h3>
                 <label for="superficieIntonacoTamponamento">Superficie (mq):</label>
                 <input type="text" id="superficieIntonacoTamponamento" name="superficieIntonacoTamponamento"><br>
@@ -46,8 +49,10 @@
                     </option>
                     <option value="intonacoBB500">Intonaco di Corpo Materico (Interno/Esterno): BB 500 Venezia</option>
                 </select><br>
+                </div>
 
                 <!-- tavoli divisori-->
+                <div class="tavolati_divisori">
                 <h3>Tavolati divisori</h3>
                 <label for="materiale">Materiale:</label>
                 <select name="materiale" id="materiale">
@@ -71,8 +76,10 @@
                     <label for="superficieCanafiber">Superficie canafiber</label>
                     <input type="text" id="superficieCanafiber" name="superficieCanafiber"><br>
                 </div>
+                </div>
 
                 <!-- ciclo di intonaco e finitura su tavoli divisori-->
+                <!--<div class="ciclo_intonaco_finitura_tavoli_divisori">-->
                 <h3>Ciclo di intonaco e finitura su tavoli divisori</h3>
                 <label for="sceltaIntonacoTavoliDivisori">Scelta Intonaco:</label>
                 <select name="sceltaIntonacoTavoliDivisori" id="sceltaIntonacoTavoliDivisori">
@@ -81,6 +88,7 @@
                     <option value="3">Intonaco a civile e rasatura materica: ICN + Canaposo</option>
                     <option value="4">Intonaco di corpo materico: BB 500 Venezia</option>
                 </select><br>
+
 
                 <!-- isolamento copertura -->
                 <h3>Isolamento copertura</h3>
@@ -360,6 +368,51 @@
 
         /* Stile per il contenitore del contenuto */
         .content {
+            position: relative;
+            z-index: 1;
+            background: rgba(128, 114, 96, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(9px);
+            color: #fff;
+            border-radius: 12px;
+            padding: 30px 40px;
+            margin: auto; /* Aggiunto per centrare il contenuto */
+            max-width: 600px; /* Aggiunto per limitare la larghezza del contenuto */
+            animation: fadeIn 1s ease-in-out; /* Aggiunto effetto di fade iniziale più corto */
+        }
+
+        /* stile muratura tamponamento*/
+        .muratura_tamponamento {
+            position: relative;
+            z-index: 1;
+            background: rgba(128, 114, 96, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(9px);
+            color: #fff;
+            border-radius: 12px;
+            padding: 30px 40px;
+            margin: auto; /* Aggiunto per centrare il contenuto */
+            max-width: 600px; /* Aggiunto per limitare la larghezza del contenuto */
+            animation: fadeIn 1s ease-in-out; /* Aggiunto effetto di fade iniziale più corto */
+        }
+
+        /* stile ciclo intonaco finitura tamponamento */
+        .ciclo_intonaco_finitura_tamp {
+            position: relative;
+            z-index: 1;
+            background: rgba(128, 114, 96, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(9px);
+            color: #fff;
+            border-radius: 12px;
+            padding: 30px 40px;
+            margin: auto; /* Aggiunto per centrare il contenuto */
+            max-width: 600px; /* Aggiunto per limitare la larghezza del contenuto */
+            animation: fadeIn 1s ease-in-out; /* Aggiunto effetto di fade iniziale più corto */
+        }
+
+        /* stile tavolati divisori */
+        .tavolati_divisori {
             position: relative;
             z-index: 1;
             background: rgba(128, 114, 96, 0.4);
