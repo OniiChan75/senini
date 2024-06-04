@@ -58,19 +58,28 @@ function showControparteEsterna() {
         document.getElementById("controparteEsterna1").style.display = "block";
         document.getElementById("controparteEsterna2").style.display = "none";
         document.getElementById("controparteEsterna3").style.display = "none";
+        document.getElementById("controparteEsterna4").style.display = "none";
     } else if (scelta1 === "controparteEsterna2") {
         document.getElementById("controparteEsterna2").style.display = "block";
         document.getElementById("controparteEsterna1").style.display = "none";
         document.getElementById("controparteEsterna3").style.display = "none";
-    } else if (scelta1 == "controparteEsterna3"){
+        document.getElementById("controparteEsterna4").style.display = "none";
+    } else if (scelta1 === "controparteEsterna3") {
         document.getElementById("controparteEsterna3").style.display = "block";
         document.getElementById("controparteEsterna1").style.display = "none";
         document.getElementById("controparteEsterna2").style.display = "none";
-    } else {
+        document.getElementById("controparteEsterna4").style.display = "none";
+    }  else if (scelta1 === "controparteEsterna4") {
+        document.getElementById("controparteEsterna4").style.display = "block";
+        document.getElementById("controparteEsterna1").style.display = "none";
+        document.getElementById("controparteEsterna2").style.display = "none";
+        document.getElementById("controparteEsterna3").style.display = "none";
+    }  else {
         // defoult
         document.getElementById("controparteEsterna1").style.display = "block";
         document.getElementById("controparteEsterna2").style.display = "none";
         document.getElementById("controparteEsterna3").style.display = "none";
+        document.getElementById("controparteEsterna4").style.display = "none";
     }
 }
 
@@ -88,19 +97,19 @@ function showControparteInterna() {
         document.getElementById("controparteInterna3").style.display = "none";
         document.getElementById("controparteInterna4").style.display = "none";
         document.getElementById("controparteInterna5").style.display = "none";
-    } else if (scelta2 == "controparteInterna3") {
+    } else if (scelta2 === "controparteInterna3") {
         document.getElementById("controparteInterna3").style.display = "block";
         document.getElementById("controparteInterna1").style.display = "none";
         document.getElementById("controparteInterna2").style.display = "none";
         document.getElementById("controparteInterna4").style.display = "none";
         document.getElementById("controparteInterna5").style.display = "none";
-    }else if (scelta2 == "controparteInterna4"){
+    }else if (scelta2 === "controparteInterna4"){
         document.getElementById("controparteInterna4").style.display = "block";
         document.getElementById("controparteInterna1").style.display = "none";
         document.getElementById("controparteInterna3").style.display = "none";
         document.getElementById("controparteInterna2").style.display = "none";
         document.getElementById("controparteInterna5").style.display = "none";
-    }else if (scelta2 == "controparteInterna5") {
+    }else if (scelta2 === "controparteInterna5") {
         document.getElementById("controparteInterna5").style.display = "block";
         document.getElementById("controparteInterna1").style.display = "none";
         document.getElementById("controparteInterna3").style.display = "none";

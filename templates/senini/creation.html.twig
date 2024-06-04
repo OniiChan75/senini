@@ -130,6 +130,7 @@
                         <option value="controparteEsterna1">Solo blocco ambiente</option>
                         <option value="controparteEsterna2">Blocco ambiente + canafiber</option>
                         <option value="controparteEsterna3">Blocco ambiente + bio beton pronto</option>
+                        <option value="controparteEsterna4">Blocco ambiente + canafiber intercapedine</option>
                     </select><br>
                     <div id="controparteEsterna1">
                         <label for="spessoreBA">Spessore blocco ambiente:</label>
@@ -147,6 +148,13 @@
                         <label for="spessoreBioBeton">Spessore bio beton pronto:</label>
                         <input type="text" id="spessoreBioBeton" name="spessoreBioBeton"><br>
                     </div>
+                    <div id="controparteEsterna4" style="display: none;">
+                        <label for="spessoreBA">Spessore blocco ambiente:</label>
+                        <input type="text" id="spessoreBA" name="spessoreBA"><br>
+                        <label for="canafiberIntercapedine">Canafiber intercapedine:</label>
+                        <input type="text" id="canafiberIntercapedine" name="canafiberIntercapedine"><br>
+                    </div>
+
                 </div>
 
 
@@ -341,14 +349,22 @@
                 document.getElementById("controparteEsterna1").style.display = "block";
                 document.getElementById("controparteEsterna2").style.display = "none";
                 document.getElementById("controparteEsterna3").style.display = "none";
+                document.getElementById("controparteEsterna4").style.display = "none";
             } else if (scelta === "controparteEsterna2") {
                 document.getElementById("controparteEsterna2").style.display = "block";
                 document.getElementById("controparteEsterna1").style.display = "none";
                 document.getElementById("controparteEsterna3").style.display = "none";
-            } else if (scelta == "controparteEsterna3"){
+                document.getElementById("controparteEsterna4").style.display = "none";
+            } else if (scelta === "controparteEsterna3"){
                 document.getElementById("controparteEsterna3").style.display = "block";
                 document.getElementById("controparteEsterna1").style.display = "none";
                 document.getElementById("controparteEsterna2").style.display = "none";
+                document.getElementById("controparteEsterna4").style.display = "none";
+            } else if (scelta === "controparteEsterna4"){
+                document.getElementById("controparteEsterna4").style.display = "block";
+                document.getElementById("controparteEsterna1").style.display = "none";
+                document.getElementById("controparteEsterna2").style.display = "none";
+                document.getElementById("controparteEsterna3").style.display = "none";
             }
         });
 
