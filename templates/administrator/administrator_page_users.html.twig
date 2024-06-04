@@ -11,11 +11,14 @@
     <div class="content">
 
         <h2>Scegli le modifiche che vuoi fare</h2>
-        <select id="modifiche" onchange="showOptions()">
-            <option value="utente">Modifica tabella utenti</option>
-            <option value="materiali">Modifica tabella materiali</option>
-        </select><br>
+        <div class="pulsanti">
+            <a href="{{ path('app_homepage') }}" class="pulsante">Indietro</a>
+            <a href="" class="pulsante pulsante-corrente">Utenti</a>
+            <a href="{{ path('api_admin_materials') }}" class="pulsante">Materiali</a>
+        </div>
 
+
+        <br>
         <div id="opzioni-modifica-utenti">
         <h1>Modifica tabella utenti</h1>
         <!-- Form per aggiungere utente -->
@@ -133,7 +136,7 @@
 {%  endblock %}
 
 {% block javascripts %}
-    <script src="{{ asset('js/admin.js') }}"></script>
+
 {% endblock %}
 
 {%  block stylesheets %}
@@ -204,6 +207,35 @@
 
         button:hover {
             background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .pulsanti {
+          display: flex;
+          justify-content: space-between; /* Distribuisce gli elementi flexbox con spaziatura tra di essi */
+          align-items: center;
+          /* Aggiungi altri stili desiderati per il contenitore, come margini o padding */
+        }
+
+        .pulsante {
+          /* Stile per i singoli pulsanti */
+          padding: 10px 20px;
+          background-color: rgba(0, 0, 0, 0.5);
+          color: white;
+          text-decoration: none;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background-color 0.3s;
+        }
+
+        .pulsante:hover {
+          background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .pulsante-corrente {
+          background-color: rgba(0, 0, 0, 0.5);
+          color: white;
+          border: 2px solid white;
+          pointer-events: none
         }
 
         /* Aggiungi animazione di fade */

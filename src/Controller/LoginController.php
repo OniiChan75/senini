@@ -26,7 +26,7 @@ class LoginController extends AbstractController
         if($user != null){
             if ($user->getRole() == 'admin') {
                 // Se le credenziali sono corrette, reindirizza alla pagina di amministrazione
-                return $this->redirectToRoute('api_admin');
+                return $this->redirectToRoute('api_admin_users');
             }
 
             return $this->redirectToRoute('app_creation');
