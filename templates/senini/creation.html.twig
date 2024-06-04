@@ -79,30 +79,36 @@
                 </div>
 
                 <!-- ciclo di intonaco e finitura su tavoli divisori-->
-                <!--<div class="ciclo_intonaco_finitura_tavoli_divisori">-->
-                <h3>Ciclo di intonaco e finitura su tavoli divisori</h3>
-                <label for="sceltaIntonacoTavoliDivisori">Scelta Intonaco:</label>
-                <select name="sceltaIntonacoTavoliDivisori" id="sceltaIntonacoTavoliDivisori">
-                    <option value="1">Al civile interno: ICN e Malta Fine</option>
-                    <option value="2">Intonaco a civile e rasatura materica: ICN + Canapulino</option>
-                    <option value="3">Intonaco a civile e rasatura materica: ICN + Canaposo</option>
-                    <option value="4">Intonaco di corpo materico: BB 500 Venezia</option>
-                </select><br>
-
+                <div class="ciclo_intonaco_finitura_tavoli_divisori">
+                    <h3>Ciclo di intonaco e finitura su tavoli divisori</h3>
+                    <label for="sceltaIntonacoTavoliDivisori">Scelta Intonaco:</label>
+                    <select name="sceltaIntonacoTavoliDivisori" id="sceltaIntonacoTavoliDivisori">
+                        <option value="1">Al civile interno: ICN e Malta Fine</option>
+                        <option value="2">Intonaco a civile e rasatura materica: ICN + Canapulino</option>
+                        <option value="3">Intonaco a civile e rasatura materica: ICN + Canaposo</option>
+                        <option value="4">Intonaco di corpo materico: BB 500 Venezia</option>
+                    </select><br>
+                </div>
 
                 <!-- isolamento copertura -->
-                <h3>Isolamento copertura</h3>
-                <label for="superficieIsolamentoCopertura">Superficie (mq):</label>
-                <input type="text" id="superficieIsolamentoCopertura" name="superficieIsolamentoCopertura"><br>
-                <label for="spessoreIsolamentoCopertura">Spessore (cm):</label>
-                <input type="text" id="spessoreIsolamentoCopertura" name="spessoreIsolamentoCopertura"><br>
+                <div class="isolamento_copertura">
+                    <h3>Isolamento copertura</h3>
+                    <label for="superficieIsolamentoCopertura">Superficie (mq):</label>
+                    <input type="text" id="superficieIsolamentoCopertura" name="superficieIsolamentoCopertura"><br>
+                    <label for="spessoreIsolamentoCopertura">Spessore (cm):</label>
+                    <input type="text" id="spessoreIsolamentoCopertura" name="spessoreIsolamentoCopertura"><br>
+                </div>
+
 
                 <!-- isolamento sottofondo -->
-                <h3>Isolamento sottofondo</h3>
-                <label for="superficieIsolamentoSottofondo">Superficie (mq):</label>
-                <input type="text" id="superficieIsolamentoSottofondo" name="superficieIsolamentoSottofondo"><br>
-                <label for="spessoreIsolamentoSottofondo">Spessore (cm):</label>
-                <input type="text" id="spessoreIsolamentoSottofondo" name="spessoreIsolamentoSottofondo"><br><br>
+                <div class="isolamento_sottofondo">
+                    <h3>Isolamento sottofondo</h3>
+                    <label for="superficieIsolamentoSottofondo">Superficie (mq):</label>
+                    <input type="text" id="superficieIsolamentoSottofondo" name="superficieIsolamentoSottofondo"><br>
+                    <label for="spessoreIsolamentoSottofondo">Spessore (cm):</label>
+                    <input type="text" id="spessoreIsolamentoSottofondo" name="spessoreIsolamentoSottofondo"><br><br>
+                </div>
+
 
                 <label for="agente">Agente: </label>
                 <input type="text" id="agente" name="agente"><br>
@@ -113,120 +119,142 @@
 
             <div id="opzioni-costruzione-esistente" style="display: none;">
                 <h1>Costruzione esistente</h1>
+
                 <!-- controparete esterna -->
-                <h3>Controparete esterna</h3>
-                <label for="superficieContropareteEsterna">Superficie:</label>
-                <input type="text" id="superficieContropareteEsterna" name="superficieContropareteEsterna"><br>
-                <label for="controparteEsterna">Scelta tra:</label>
-                <select name="controparteEsterna" id="controparteEsterna">
-                    <option value="controparteEsterna1">Solo blocco ambiente</option>
-                    <option value="controparteEsterna2">Blocco ambiente + canafiber</option>
-                    <option value="controparteEsterna3">Blocco ambiente + bio beton pronto</option>
-                </select><br>
-                <div id="controparteEsterna1">
-                    <label for="spessoreBA">Spessore blocco ambiente:</label>
-                    <input type="text" id="spessoreBA" name="spessoreBA"><br>
+                <div class="controparete_esterna">
+                    <h3>Controparete esterna</h3>
+                    <label for="superficieContropareteEsterna">Superficie:</label>
+                    <input type="text" id="superficieContropareteEsterna" name="superficieContropareteEsterna"><br>
+                    <label for="controparteEsterna">Scelta tra:</label>
+                    <select name="controparteEsterna" id="controparteEsterna">
+                        <option value="controparteEsterna1">Solo blocco ambiente</option>
+                        <option value="controparteEsterna2">Blocco ambiente + canafiber</option>
+                        <option value="controparteEsterna3">Blocco ambiente + bio beton pronto</option>
+                    </select><br>
+                    <div id="controparteEsterna1">
+                        <label for="spessoreBA">Spessore blocco ambiente:</label>
+                        <input type="text" id="spessoreBA" name="spessoreBA"><br>
+                    </div>
+                    <div id="controparteEsterna2" style="display: none;">
+                        <label for="spessoreBA">Spessore blocco ambiente:</label>
+                        <input type="text" id="spessoreBA" name="spessoreBA"><br>
+                        <label for="spessoreCanafiber">Spessore canafiber:</label>
+                        <input type="text" id="spessoreCanafiberEsterno" name="spessoreCanafiberEsterno"><br>
+                    </div>
+                    <div id="controparteEsterna3" style="display: none;">
+                        <label for="spessoreBA">Spessore blocco ambiente:</label>
+                        <input type="text" id="spessoreBA" name="spessoreBA"><br>
+                        <label for="spessoreBioBeton">Spessore bio beton pronto:</label>
+                        <input type="text" id="spessoreBioBeton" name="spessoreBioBeton"><br>
+                    </div>
                 </div>
-                <div id="controparteEsterna2" style="display: none;">
-                    <label for="spessoreBA">Spessore blocco ambiente:</label>
-                    <input type="text" id="spessoreBA" name="spessoreBA"><br>
-                    <label for="spessoreCanafiber">Spessore canafiber:</label>
-                    <input type="text" id="spessoreCanafiberEsterno" name="spessoreCanafiberEsterno"><br>
-                </div>
-                <div id="controparteEsterna3" style="display: none;">
-                    <label for="spessoreBA">Spessore blocco ambiente:</label>
-                    <input type="text" id="spessoreBA" name="spessoreBA"><br>
-                    <label for="spessoreBioBeton">Spessore bio beton pronto:</label>
-                    <input type="text" id="spessoreBioBeton" name="spessoreBioBeton"><br>
-                </div>
+
 
                 <!-- ciclo di intonaco e finitura controparte esterna -->
-                <h3>Ciclo di intonaco e finitura controparte esterna</h3>
-                <label for="sceltaIntFinEst">Scelta tra:</label>
-                <select name="sceltaIntFinEst" id="sceltaIntFinEst">
-                    <option value="sceltaIntFinEst1">Al civile : ICN e SNT+</option>
-                    <option value="sceltaIntFinEst2">Intonaco a civile e rasatura materica: ICN + Canapulino</option>
-                    <option value="sceltaIntFinEst3">Intonaco di corpo materico : BB 500 Venezia</option>
-                </select><br>
+                <div class="ciclo_intonaco_finitura_controparete_esterna">
+                    <h3>Ciclo di intonaco e finitura controparte esterna</h3>
+                    <label for="sceltaIntFinEst">Scelta tra:</label>
+                    <select name="sceltaIntFinEst" id="sceltaIntFinEst">
+                        <option value="sceltaIntFinEst1">Al civile : ICN e SNT+</option>
+                        <option value="sceltaIntFinEst2">Intonaco a civile e rasatura materica: ICN + Canapulino</option>
+                        <option value="sceltaIntFinEst3">Intonaco di corpo materico : BB 500 Venezia</option>
+                    </select><br>
+                </div>
+
 
                 <!-- controparete interna -->
-                <h3>Controparete interna</h3>
-                <label for="superficieContropareteInterna">Superficie:</label>
-                <input type="text" id="superficieContropareteInterna" name="superficieContropareteInterna"><br>
-                <label for="controparteInterna">Scelta tra:</label>
-                <select name="controparteInterna" id="controparteInterna">
-                    <option value="controparteInterna1">Solo blocco ambiente</option>
-                    <option value="controparteInterna2">Blocco ambiente + canafiber</option>
-                    <option value="controparteInterna3">Blocco ambiente + bio beton pronto</option>
-                    <option value="controparteInterna4">lastra gessofibra + bio beton pronto</option>
-                    <option value="controparteInterna5">lastra gessofibra + canafiber</option>
-                </select><br>
-                <div id="controparteInterna1">
-                    <label for="spessoreBA">Spessore blocco ambiente:</label>
-                    <input type="text" id="spessoreBAInt1" name="spessoreBAInt1"><br>
+                <div class="controparete_interna">
+                    <h3>Controparete interna</h3>
+                    <label for="superficieContropareteInterna">Superficie:</label>
+                    <input type="text" id="superficieContropareteInterna" name="superficieContropareteInterna"><br>
+                    <label for="controparteInterna">Scelta tra:</label>
+                    <select name="controparteInterna" id="controparteInterna">
+                        <option value="controparteInterna1">Solo blocco ambiente</option>
+                        <option value="controparteInterna2">Blocco ambiente + canafiber</option>
+                        <option value="controparteInterna3">Blocco ambiente + bio beton pronto</option>
+                        <option value="controparteInterna4">lastra gessofibra + bio beton pronto</option>
+                        <option value="controparteInterna5">lastra gessofibra + canafiber</option>
+                    </select><br>
+                    <div id="controparteInterna1">
+                        <label for="spessoreBA">Spessore blocco ambiente:</label>
+                        <input type="text" id="spessoreBAInt1" name="spessoreBAInt1"><br>
+                    </div>
+                    <div id="controparteInterna2" style="display: none;">
+                        <label for="spessoreBA">Spessore blocco ambiente:</label>
+                        <input type="text" id="spessoreBAInt2" name="spessoreBAInt2"><br>
+                        <label for="spessoreCana">Spessore canafiber:</label>
+                        <input type="text" id="spessoreCanaInt" name="spessoreCanaInt"><br>
+                    </div>
+                    <div id="controparteInterna3" style="display: none;">
+                        <label for="spessoreBA">Spessore blocco ambiente:</label>
+                        <input type="text" id="spessoreBAInt3" name="spessoreBAInt3"><br>
+                        <label for="spessoreBBPronto">Spessore bio beton pronto:</label>
+                        <input type="text" id="spessoreBBProntoInt1" name="spessoreBBProntoInt1"><br>
+                    </div>
+                    <div id="controparteInterna4" style="display: none;">
+                        <label for="spessoreBBPronto">Spessore bio beton pronto:</label>
+                        <input type="text" id="spessoreBBProntoInt2" name="spessoreBBProntoInt2"><br>
+                    </div>
+                    <div id="controparteInterna5" style="display: none;">
+                        <label for="spessoreCana">Spessore canafiber:</label>
+                        <input type="text" id="spessoreCanaInt2" name="spessoreCanaInt2"><br>
+                    </div>
                 </div>
-                <div id="controparteInterna2" style="display: none;">
-                    <label for="spessoreBA">Spessore blocco ambiente:</label>
-                    <input type="text" id="spessoreBAInt2" name="spessoreBAInt2"><br>
-                    <label for="spessoreCana">Spessore canafiber:</label>
-                    <input type="text" id="spessoreCanaInt" name="spessoreCanaInt"><br>
-                </div>
-                <div id="controparteInterna3" style="display: none;">
-                    <label for="spessoreBA">Spessore blocco ambiente:</label>
-                    <input type="text" id="spessoreBAInt3" name="spessoreBAInt3"><br>
-                    <label for="spessoreBBPronto">Spessore bio beton pronto:</label>
-                    <input type="text" id="spessoreBBProntoInt1" name="spessoreBBProntoInt1"><br>
-                </div>
-                <div id="controparteInterna4" style="display: none;">
-                    <label for="spessoreBBPronto">Spessore bio beton pronto:</label>
-                    <input type="text" id="spessoreBBProntoInt2" name="spessoreBBProntoInt2"><br>
-                </div>
-                <div id="controparteInterna5" style="display: none;">
-                    <label for="spessoreCana">Spessore canafiber:</label>
-                    <input type="text" id="spessoreCanaInt2" name="spessoreCanaInt2"><br>
-                </div>
+
 
                 <!-- ciclo di intonaco e finitura su controparte interna -->
-                <h3>Ciclo di intonaco e finitura controparte interna</h3>
-                <label for="sceltaIntFinInt">Scelta tra:</label>
-                <select name="sceltaIntFinInt" id="sceltaIntFinInt">
-                    <option value="sceltaIntFinInt1">Al civile interno: ICN e Malta Fine</option>
-                    <option value="sceltaIntFinInt2">Intonaco a civile e rasatura materica: ICN + Canapulino</option>
-                    <option value="sceltaIntFinInt3">intonaco a civile e rasatura materica: ICN + Canaposo</option>
-                    <option value="sceltaIntFinInt4">intonaco di corpo materico: BB 500 Venezia</option>
-                </select><br>
+                <div class="ciclo_intonaco_finitura_controparete_interna">
+                    <h3>Ciclo di intonaco e finitura controparte interna</h3>
+                    <label for="sceltaIntFinInt">Scelta tra:</label>
+                    <select name="sceltaIntFinInt" id="sceltaIntFinInt">
+                        <option value="sceltaIntFinInt1">Al civile interno: ICN e Malta Fine</option>
+                        <option value="sceltaIntFinInt2">Intonaco a civile e rasatura materica: ICN + Canapulino</option>
+                        <option value="sceltaIntFinInt3">intonaco a civile e rasatura materica: ICN + Canaposo</option>
+                        <option value="sceltaIntFinInt4">intonaco di corpo materico: BB 500 Venezia</option>
+                    </select><br>
+                </div>
+
 
                 <!-- isolamento copertura -->
-                <h3>Isolamento copertura</h3>
-                <label for="superficieIsolamentoCoperturaOLD">Superficie:</label>
-                <input type="text" id="superficieIsolamentoCoperturaOLD" name="superficieIsolamentoCoperturaOLD"><br>
-                <label for="spessoreIsolamentoCoperturaOLD">Spessore:</label>
-                <input type="text" id="spessoreIsolamentoCoperturaOLD" name="spessoreIsolamentoCoperturaOLD"><br>
+                <div class="isolamento_copertura">
+                    <h3>Isolamento copertura</h3>
+                    <label for="superficieIsolamentoCoperturaOLD">Superficie:</label>
+                    <input type="text" id="superficieIsolamentoCoperturaOLD" name="superficieIsolamentoCoperturaOLD"><br>
+                    <label for="spessoreIsolamentoCoperturaOLD">Spessore:</label>
+                    <input type="text" id="spessoreIsolamentoCoperturaOLD" name="spessoreIsolamentoCoperturaOLD"><br>
+                </div>
+
 
 
                 <!--isolamento solaio sottofondo-->
-                <h3> Isolamento solaio sottofondo</h3>
-                <label for="superficieIsolamentoSolaioSottofondo">Superficie:</label>
-                <input type="text" id="superficieIsolamentoSolaioSottofondo" name="superficieIsolamentoSolaioSottofondo"><br>
-                <label for="spessoreIsolamentoSolaioSottofondo">Spessore:</label>
-                <input type="text" id="spessoreIsolamentoSolaioSottofondo" name="spessoreIsolamentoSolaioSottofondo"><br>
+                <div class="isolamento_solaio_sottofondo">
+                    <h3> Isolamento solaio sottofondo</h3>
+                    <label for="superficieIsolamentoSolaioSottofondo">Superficie:</label>
+                    <input type="text" id="superficieIsolamentoSolaioSottofondo" name="superficieIsolamentoSolaioSottofondo"><br>
+                    <label for="spessoreIsolamentoSolaioSottofondo">Spessore:</label>
+                    <input type="text" id="spessoreIsolamentoSolaioSottofondo" name="spessoreIsolamentoSolaioSottofondo"><br>
+                </div>
+
 
 
                 <!-- isolamento sottofondo -->
-                <h3>Isolamento sottofondo</h3>
-                <label for="superficieIsolamentoSottofondoOLD">Superficie:</label>
-                <input type="text" id="superficieIsolamentoSottofondoOLD" name="superficieIsolamentoSottofondoOLD"><br>
-                <label for="spessoreIsolamentoSottofondoOLD">Spessore:</label>
-                <input type="text" id="spessoreIsolamentoSottofondoOLD" name="spessoreIsolamentoSottofondoOLD"><br>
-
-
+                <div class="isolamento_sottofondo">
+                    <h3>Isolamento sottofondo</h3>
+                    <label for="superficieIsolamentoSottofondoOLD">Superficie:</label>
+                    <input type="text" id="superficieIsolamentoSottofondoOLD" name="superficieIsolamentoSottofondoOLD"><br>
+                    <label for="spessoreIsolamentoSottofondoOLD">Spessore:</label>
+                    <input type="text" id="spessoreIsolamentoSottofondoOLD" name="spessoreIsolamentoSottofondoOLD"><br>
+                </div>
 
                 <!-- termointonaco bio beton 500 -->
-                <h3>Termointonaco Bio Beton 500</h3>
-                <label for="superficieTermointonaco">Superficie:</label>
-                <input type="text" id="superficieTermointonaco" name="superficieTermointonaco"><br>
-                <label for="spessoreTermointonaco">Spessore:</label>
-                <input type="text" id="spessoreTermointonaco" name="spessoreTermointonaco"><br><br><br>
+                <div class="termointonaco_bio_beton">
+                    <h3>Termointonaco Bio Beton 500</h3>
+                    <label for="superficieTermointonaco">Superficie:</label>
+                    <input type="text" id="superficieTermointonaco" name="superficieTermointonaco"><br>
+                    <label for="spessoreTermointonaco">Spessore:</label>
+                    <input type="text" id="spessoreTermointonaco" name="spessoreTermointonaco"><br><br><br>
+                </div>
+
 
                 <label for="agente">Agente: </label>
                 <input type="text" id="agente" name="agente"><br>
@@ -425,6 +453,143 @@
             max-width: 600px; /* Aggiunto per limitare la larghezza del contenuto */
             animation: fadeIn 1s ease-in-out; /* Aggiunto effetto di fade iniziale più corto */
         }
+
+        /* stile ciclo intonaco finitura tavolati divisori */
+        .ciclo_intonaco_finitura_tavoli_divisori {
+            position: relative;
+            z-index: 1;
+            background: rgba(128, 114, 96, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(9px);
+            color: #fff;
+            border-radius: 12px;
+            padding: 30px 40px;
+            margin: auto; /* Aggiunto per centrare il contenuto */
+            max-width: 600px; /* Aggiunto per limitare la larghezza del contenuto */
+            animation: fadeIn 1s ease-in-out; /* Aggiunto effetto di fade iniziale più corto */
+        }
+
+        /* stile isolamento copertura */
+        .isolamento_copertura {
+            position: relative;
+            z-index: 1;
+            background: rgba(128, 114, 96, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(9px);
+            color: #fff;
+            border-radius: 12px;
+            padding: 30px 40px;
+            margin: auto; /* Aggiunto per centrare il contenuto */
+            max-width: 600px; /* Aggiunto per limitare la larghezza del contenuto */
+            animation: fadeIn 1s ease-in-out; /* Aggiunto effetto di fade iniziale più corto */
+        }
+
+        /* stile isolamento sottofondo */
+        .isolamento_sottofondo {
+            position: relative;
+            z-index: 1;
+            background: rgba(128, 114, 96, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(9px);
+            color: #fff;
+            border-radius: 12px;
+            padding: 30px 40px;
+            margin: auto; /* Aggiunto per centrare il contenuto */
+            max-width: 600px; /* Aggiunto per limitare la larghezza del contenuto */
+            animation: fadeIn 1s ease-in-out; /* Aggiunto effetto di fade iniziale più corto */
+        }
+
+        /* sile controparete esterna */
+        .controparete_esterna {
+            position: relative;
+            z-index: 1;
+            background: rgba(128, 114, 96, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(9px);
+            color: #fff;
+            border-radius: 12px;
+            padding: 30px 40px;
+            margin: auto; /* Aggiunto per centrare il contenuto */
+            max-width: 600px; /* Aggiunto per limitare la larghezza del contenuto */
+            animation: fadeIn 1s ease-in-out; /* Aggiunto effetto di fade iniziale più corto */
+        }
+
+        /* stile ciclo intonaco finitura controparete esterna */
+        .ciclo_intonaco_finitura_controparete_esterna {
+            position: relative;
+            z-index: 1;
+            background: rgba(128, 114, 96, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(9px);
+            color: #fff;
+            border-radius: 12px;
+            padding: 30px 40px;
+            margin: auto; /* Aggiunto per centrare il contenuto */
+            max-width: 600px; /* Aggiunto per limitare la larghezza del contenuto */
+            animation: fadeIn 1s ease-in-out; /* Aggiunto effetto di fade iniziale più corto */
+        }
+
+        /* stile controparete interna */
+        .controparete_interna {
+            position: relative;
+            z-index: 1;
+            background: rgba(128, 114, 96, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(9px);
+            color: #fff;
+            border-radius: 12px;
+            padding: 30px 40px;
+            margin: auto; /* Aggiunto per centrare il contenuto */
+            max-width: 600px; /* Aggiunto per limitare la larghezza del contenuto */
+            animation: fadeIn 1s ease-in-out; /* Aggiunto effetto di fade iniziale più corto */
+        }
+
+        /* stile ciclo intonaco finitura controparete interna */
+        .ciclo_intonaco_finitura_controparete_interna {
+            position: relative;
+            z-index: 1;
+            background: rgba(128, 114, 96, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(9px);
+            color: #fff;
+            border-radius: 12px;
+            padding: 30px 40px;
+            margin: auto; /* Aggiunto per centrare il contenuto */
+            max-width: 600px; /* Aggiunto per limitare la larghezza del contenuto */
+            animation: fadeIn 1s ease-in-out; /* Aggiunto effetto di fade iniziale più corto */
+        }
+
+        /* stile isolamento solaio sottofondo */
+        .isolamento_solaio_sottofondo {
+            position: relative;
+            z-index: 1;
+            background: rgba(128, 114, 96, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(9px);
+            color: #fff;
+            border-radius: 12px;
+            padding: 30px 40px;
+            margin: auto; /* Aggiunto per centrare il contenuto */
+            max-width: 600px; /* Aggiunto per limitare la larghezza del contenuto */
+            animation: fadeIn 1s ease-in-out; /* Aggiunto effetto di fade iniziale più corto */
+        }
+
+        /* stile termointonaco bio beton 500 */
+        .termointonaco_bio_beton {
+            position: relative;
+            z-index: 1;
+            background: rgba(128, 114, 96, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(9px);
+            color: #fff;
+            border-radius: 12px;
+            padding: 30px 40px;
+            margin: auto; /* Aggiunto per centrare il contenuto */
+            max-width: 600px; /* Aggiunto per limitare la larghezza del contenuto */
+            animation: fadeIn 1s ease-in-out; /* Aggiunto effetto di fade iniziale più corto */
+        }
+
+        /* stile 
 
         /* Stile per il titolo */
         h2 {
