@@ -19,20 +19,22 @@
 
             <div id="opzioni-nuova-costruzione">
                 <h1>Nuova costruzione</h1>
-                
-                <!-- muratura di temponamento -->
+
+                <!-- muratura di tamponamento -->
                 <div class="muratura_tamponamento">
-                <h3>Muratura di tamponamento</h3>
-                <label for="superficieTamponamento">Superficie (mq):</label>
-                <input type="text" id="superficieTamponamento" name="superficieTamponamento"><br>
-                <label for="spessoreTamponamento">Spessore Blocco Ambiente (cm):</label>
-                <input type="text" id="spessoreTamponamento" name="spessoreTamponamento"><br>
-                <label for="sceltaMaltaTamponamento">Scelta Malta:</label>
-                <select name="sceltaMaltaTamponamento" id="sceltaMaltaTamponamento">
-                    <option value="maltaPronta">Malta Pronta</option>
-                    <option value="maltaMix">Malta Mix</option>
-                </select><br>
+                    <h3>Muratura di tamponamento</h3>
+                    <label for="superficieTamponamento">Superficie (mq):</label>
+                    <input type="text" id="superficieTamponamento" name="superficieTamponamento"><br>
+                    <label for="spessoreTamponamento">Spessore Blocco Ambiente (cm):</label>
+                    <input type="text" id="spessoreTamponamento" name="spessoreTamponamento"><br>
+                    <label for="sceltaMaltaTamponamento">Scelta Malta:</label>
+                    <select name="sceltaMaltaTamponamento" id="sceltaMaltaTamponamento">
+                        <option value="maltaPronta">Malta Pronta</option>
+                        <option value="maltaMix">Malta Mix</option>
+                    </select><br>
+                    <img src="{{ asset('img/muratura.png') }}" alt="" class="imagine">
                 </div>
+
 
                 <!-- ciclo di intonaco e finitura su tamponamento -->
                 <div class="ciclo_intonaco_finitura_tamp">
@@ -395,6 +397,35 @@
             padding: 0;
             font-family: Arial, sans-serif;
         }
+
+        /* Stile per le immagini */
+        /* Stile per le immagini */
+        .imagine {
+            width: 200px;
+            height: 200px;
+            position: relative; /* Enable positioning */
+            right: -300px; /* Move the image to the right */
+            top: -10px; /* Move the image upwards */
+            border-radius: 15px; /* Rounded corners */
+            mask-image: radial-gradient(circle, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5), transparent);
+            -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5), transparent); /* For Safari */
+        }
+
+        /* Additional class for the faded border effect */
+        .imagine::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 15px; /* Match the border radius of the image */
+            box-shadow: 0 0 30px 15px rgba(255, 255, 255, 0.5); /* Outer white glow for the fade effect */
+            pointer-events: none; /* Make sure this layer doesn't interfere with interactions */
+            z-index: -1; /* Ensure the pseudo-element is behind the image */
+        }
+
+
 
         /* Stile per il contenitore del background */
         .background {
