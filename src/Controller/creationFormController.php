@@ -67,31 +67,35 @@ class creationFormController extends AbstractController
         $superficieTermointonaco = $request->request->get('superficieTermointonaco') ?? 0;
         $spessoreTermointonaco = $request->request->get('spessoreTermointonaco') ?? 0;
 
+        $sconto = $request->request->get('sconto') ?? 0;
+        $agente = $request->request->get('agente') ?? 'null';
+
+
         //calcoli belli
         $metriCubiBloccoAmbiente = $calcolatore->metriCubiBloccoAmbiente($superficieTamponamento, $spessoreTamponamento, 0.96);
-        $prezzoMetroQuadroBloccoAmbiente = $calcolatore->calcoloPrezzoMetroQuadro($metriCubiBloccoAmbiente, 380, $superficieTamponamento);
+        $prezzoMetroQuadroBloccoAmbiente = $calcolatore->calcoloPrezzoMetroQuadro($metriCubiBloccoAmbiente, 380-(380*$sconto/100), $superficieTamponamento);
         $metriCubiMalta = $calcolatore->metriCubiMalta($superficieTamponamento, $spessoreTamponamento);
         $calcoloSecchiMalta = $calcolatore->calcoloSecchiMalta($superficieTamponamento, $spessoreTamponamento);
-        $prezzoMetroQuadroMalta = $calcolatore->calcoloPrezzoMetroQuadro($metriCubiMalta, 406, $superficieTamponamento);
-        $prezzoMetroQuadroMaltaSecchi = $calcolatore->calcoloPrezzoMetroQuadro($calcoloSecchiMalta, 23, $superficieTamponamento);
+        $prezzoMetroQuadroMalta = $calcolatore->calcoloPrezzoMetroQuadro($metriCubiMalta, 406-(406*$sconto/100), $superficieTamponamento);
+        $prezzoMetroQuadroMaltaSecchi = $calcolatore->calcoloPrezzoMetroQuadro($calcoloSecchiMalta, 23-(23*$sconto/100), $superficieTamponamento);
         $calcoloSacchiIntonaco = $calcolatore->calcoloSacchiIntonaco($superficieIntonacoTamponamento);
         $calcoloSacchiMaltaFinetura = $calcolatore->calcoloSacchiMaltaFinetura($superficieIntonacoTamponamento);
-        $prezzoMetroQuadroSacchiIntonaco = $calcolatore->calcoloPrezzoMetroQuadro($calcoloSacchiIntonaco, 11, $superficieIntonacoTamponamento);
-        $prezzoMetroQuadroMaltaFinetura = $calcolatore->calcoloPrezzoMetroQuadro($calcoloSacchiMaltaFinetura, 6, $superficieIntonacoTamponamento);
+        $prezzoMetroQuadroSacchiIntonaco = $calcolatore->calcoloPrezzoMetroQuadro($calcoloSacchiIntonaco, 11-(11*$sconto/100), $superficieIntonacoTamponamento);
+        $prezzoMetroQuadroMaltaFinetura = $calcolatore->calcoloPrezzoMetroQuadro($calcoloSacchiMaltaFinetura, 6-(6*$sconto/100), $superficieIntonacoTamponamento);
         $calcoloSacchiSNTplus = $calcolatore->calcoloSacchiSNTplus($superficieIntonacoTamponamento);
-        $prezzoMetroQuadroSNTplus = $calcolatore->calcoloPrezzoMetroQuadro($calcoloSacchiSNTplus, 26, $superficieIntonacoTamponamento);
+        $prezzoMetroQuadroSNTplus = $calcolatore->calcoloPrezzoMetroQuadro($calcoloSacchiSNTplus, 26-(26*$sconto/100), $superficieIntonacoTamponamento);
         $calcoloSecchiBioBeton = $calcolatore->calcoloSecchiBioBeton($superficieIntonacoTamponamento);
         $calcoloAdditivoProbiotico = $calcolatore->calcoloAdditivoProbiotico($superficieIntonacoTamponamento);
         $calcoloSecchiCanapulino = $calcolatore->calcoloSecchiCanapulino($superficieIntonacoTamponamento);
-        $prezzoMetroQuadroBioBeton = $calcolatore->calcoloPrezzoMetroQuadro($calcoloSecchiBioBeton, 23, $superficieIntonacoTamponamento);
-        $prezzoMetroQuadroAdditivoProbiotico = $calcolatore->calcoloPrezzoMetroQuadro($calcoloAdditivoProbiotico, 13, $superficieIntonacoTamponamento);
-        $prezzoMetroQuadroCanapulino = $calcolatore->calcoloPrezzoMetroQuadro($calcoloSecchiCanapulino, 27, $superficieIntonacoTamponamento);
+        $prezzoMetroQuadroBioBeton = $calcolatore->calcoloPrezzoMetroQuadro($calcoloSecchiBioBeton, 23-(23*$sconto/100), $superficieIntonacoTamponamento);
+        $prezzoMetroQuadroAdditivoProbiotico = $calcolatore->calcoloPrezzoMetroQuadro($calcoloAdditivoProbiotico, 13-(13*$sconto/100), $superficieIntonacoTamponamento);
+        $prezzoMetroQuadroCanapulino = $calcolatore->calcoloPrezzoMetroQuadro($calcoloSecchiCanapulino, 27-(27*$sconto/100), $superficieIntonacoTamponamento);
         $calcoloIsolamentoCopertura = $calcolatore->calcoloIsolamentoCopertura($superficieIsolamentoCopertura, $spessoreIsolamentoCopertura);
         $calcoloIsolamentoSottofondo = $calcolatore->calcoloIsolamentoCopertura($superficieIsolamentoSottofondo, $spessoreIsolamentoSottofondo);
-        $prezzoMetroQuadroIsolamentoCopertura = $calcolatore->calcoloPrezzoMetroQuadro($calcoloIsolamentoCopertura, 230, $superficieIsolamentoCopertura);
-        $prezzoMetroQuadroIsolamentoSottofondo = $calcolatore->calcoloPrezzoMetroQuadro($calcoloIsolamentoSottofondo, 230, $superficieIsolamentoSottofondo);
+        $prezzoMetroQuadroIsolamentoCopertura = $calcolatore->calcoloPrezzoMetroQuadro($calcoloIsolamentoCopertura, 230-(230*$sconto/100), $superficieIsolamentoCopertura);
+        $prezzoMetroQuadroIsolamentoSottofondo = $calcolatore->calcoloPrezzoMetroQuadro($calcoloIsolamentoSottofondo, 230-(230*$sconto/100), $superficieIsolamentoSottofondo);
         $calcoloContropareteInterna = $calcolatore->calcoloContropareteInterna($superficieContropareteInterna, $spessoreCanaInt2);
-        $prezzoMetroQuadroContropareteInterna = $calcolatore->calcoloPrezzoMetroQuadro($calcoloContropareteInterna, 280, $superficieContropareteInterna);
+        $prezzoMetroQuadroContropareteInterna = $calcolatore->calcoloPrezzoMetroQuadro($calcoloContropareteInterna, 280-(280*$sconto/100), $superficieContropareteInterna);
 
         return $this->render('senini/pdf-organize.html.twig', [
             'superficieTamponamento' => $superficieTamponamento,
@@ -127,6 +131,8 @@ class creationFormController extends AbstractController
             'spessoreCanaInt2' => $spessoreCanaInt2,
             'calcoloContropareteInterna' => $calcoloContropareteInterna,
             'prezzoMetroQuadroContropareteInterna' => $prezzoMetroQuadroContropareteInterna,
+            'agente' => $agente,
+            'sconto' => $sconto,
         ]);
 
 
