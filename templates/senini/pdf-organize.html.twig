@@ -30,17 +30,45 @@
         .item {
             margin-bottom: 10px;
         }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header img {
+            max-height: 80px;
+        }
+        .header div {
+            text-align: right;
+        }
+        .content {
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
 <div class="container">
-    <div class="section">
-        <div class="title">Presentazione</div>
-        <div class="item">
-            buongiorno signor {{ agente }} lei ha uno sconto del {{ sconto }}%
+    <div class="header">
+        <div class="logos">
+            <img src="{{ asset('img/ImagePdf1.png') }}" alt="Tecno Canapa Logo">
+            <img src="{{ asset('img/ImagePdf2.jpg') }}" alt="Senini Logo">
+        </div>
+        <div>
+            <p>luogo, data</p>
+            <p>CLIENTE: {{ agente }}</p>
+            <p>SCONTO: {{ sconto }}%</p>
+            <p>PREVENTIVO: numero da inserire</p>
+
         </div>
     </div>
+    <div class="content">
+        <p>Gentile cliente,</p>
+        <p>ringraziandola per la richiesta, come da accordi inviamo di seguito l’offerta di sola fornitura:</p>
+    </div>
 </div>
+
+
+
 <div class="container">
     {% if superficieTamponamento != 0 %}
         <div class="section">
